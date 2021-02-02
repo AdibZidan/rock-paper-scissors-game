@@ -1,0 +1,19 @@
+<header>
+  <nav>
+    <ng-container *ngFor="let title of titles">
+      <li>
+        {{ title }}
+      </li>
+    </ng-container>
+  </nav>
+
+  <div class="score-container">
+    <span>
+      Score
+    </span>
+
+    <span>
+      {{ score }}
+    </span>
+  </div>
+</header>

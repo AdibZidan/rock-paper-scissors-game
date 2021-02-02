@@ -1,0 +1,7 @@
+@import "./assets/partials/reset/_reset.scss";
+@import "./assets/partials/fonts/_barlow-semi-condensed.font.scss";
+@import "./assets/partials/components/_body.component.scss";
+
+@include reset;
+@include barlow-semi-condensed;
+@include body;

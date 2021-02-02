@@ -1,0 +1,54 @@
+@import "../shared/colors/_colors.scss";
+@import "../shared/border/_border.scss";
+
+@mixin header-component {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    height: 130px;
+    margin: auto;
+    border-radius: 10px;
+
+    @include border(1px, $main-color);
+
+    nav {
+      margin-left: 25px;
+
+      li {
+        color: $main-color;
+        text-transform: uppercase;
+        list-style-type: none;
+      }
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 65%;
+      margin-right: 25px;
+      padding: 16px;
+      background-color: $main-color;
+      border-radius: 6px;
+
+      &.score-container {
+        span {
+          display: inline-block;
+          color: $secondary-color;
+
+          &:first-child {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+          }
+
+          &:last-child {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import "./_button.scss";
+@import "../shared/colors/_colors.scss";
+
+@mixin footer-component {
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 18px;
+    background-color: darken($color: $background-color, $amount: 2);
+
+    @include button;
+  }
+}
