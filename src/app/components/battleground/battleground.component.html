@@ -1,3 +1,12 @@
 <section>
   <img src="/assets/images/bg-pentagon.svg" alt="Pentagon">
+
+  <div class="images-container">
+    <ng-container *ngFor="let move of moves">
+      <img
+        [class]="move.name.toLowerCase()"
+        [src]="move.image"
+        [alt]="move.name">
+    </ng-container>
+  </div>
 </section>

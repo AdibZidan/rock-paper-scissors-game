@@ -11,11 +11,11 @@ export class MoveHelper {
 
   public static getMoves(): Move[] {
     return [
-      new Rock(),
-      new Paper(),
       new Scissors(),
+      new Spock(),
+      new Paper(),
       new Lizard(),
-      new Spock()
+      new Rock()
     ];
   }
 

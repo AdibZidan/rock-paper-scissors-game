@@ -3,5 +3,32 @@
 @mixin battleground-component {
   section {
     @include center;
+
+    div {
+      &.images-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+
+        img {
+          &.scissors {
+            align-self: center;
+          }
+
+          &.spock,
+          &.lizard {
+            align-self: flex-start;
+          }
+
+          &.paper,
+          &.rock {
+            align-self: flex-end;
+          }
+        }
+
+        @include center;
+      }
+    }
   }
 }
