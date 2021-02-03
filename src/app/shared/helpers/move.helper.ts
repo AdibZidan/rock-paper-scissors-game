@@ -20,13 +20,7 @@ export class MoveHelper {
   }
 
   public static getMoveNames(): string[] {
-    return [
-      new Rock(),
-      new Paper(),
-      new Scissors(),
-      new Lizard(),
-      new Spock()
-    ].map((move: Move): string => move.name);
+    return this.getMoves().map((move: Move): string => move.name);
   }
 
 }

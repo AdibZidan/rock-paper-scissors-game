@@ -22,9 +22,9 @@ describe('HeaderComponent', () => {
   });
 
   describe('Before initialization', () => {
-    it('Should have a defined titles property', () => {
-      expect(component.titles).toBeDefined();
-      expect(component.titles).toEqual([
+    it('Should have a defined moveNames property', () => {
+      expect(component.moveNames).toBeDefined();
+      expect(component.moveNames).toEqual([
         'Rock', 'Paper', 'Scissors',
         'Lizard', 'Spock'
       ]);

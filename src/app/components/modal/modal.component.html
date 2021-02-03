@@ -1,0 +1,22 @@
+<ng-container *ngIf="isModalShown$ | async">
+  <div class="overlay"></div>
+
+  <div class="rules-container">
+    <h3>
+      <span class="rules">
+        Rules
+      </span>
+
+      <img
+        class="close"
+        src="/assets/images/icon-close.svg"
+        alt="Close Button"
+        (click)="hideModal()">
+    </h3>
+
+    <img
+      class="logo"
+      src="/assets/images/image-rules-bonus.svg"
+      alt="Game Rules">
+  </div>
+</ng-container>

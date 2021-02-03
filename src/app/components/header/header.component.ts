@@ -8,7 +8,7 @@ import { MoveHelper } from '@helpers/move.helper';
 })
 export class HeaderComponent {
 
-  public titles: string[] = MoveHelper.getMoveNames();
+  public moveNames: string[] = MoveHelper.getMoveNames();
   public score: number = 0;
 
 }

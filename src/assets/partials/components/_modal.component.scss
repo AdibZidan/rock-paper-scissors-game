@@ -1,0 +1,49 @@
+@import "../shared/overlay/_overlay.scss";
+@import "../shared/center/_center.scss";
+
+@mixin modal-component {
+  div {
+    &.overlay {
+      @include overlay;
+    }
+
+    &.rules-container {
+      z-index: 2;
+      width: 500px;
+      border-radius: 6px;
+      background-color: #fff;
+
+      @include center;
+
+      h3 {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          &.rules {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 1.6rem;
+          }
+        }
+
+        img {
+          &.close {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-top: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      img {
+        &.logo {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

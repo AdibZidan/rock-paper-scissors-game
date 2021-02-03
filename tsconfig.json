@@ -29,6 +29,15 @@
       ],
       "@models/*": [
         "src/app/shared/models/*"
+      ],
+      "@mocks/*": [
+        "src/app/shared/mocks/*"
+      ],
+      "@actions/*": [
+        "src/app/shared/store/actions/*"
+      ],
+      "@reducers/*": [
+        "src/app/shared/store/reducers/*"
       ]
     }
   },
