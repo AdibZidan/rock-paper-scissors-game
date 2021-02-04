@@ -6,7 +6,8 @@
       <img
         [class]="move.name.toLowerCase()"
         [src]="move.image"
-        [alt]="move.name">
+        [alt]="move.name"
+        (click)="selectMove(move)">
     </ng-container>
   </div>
 </section>

@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { initialState } from '@mocks/initial-state.mock';
 import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
+import { ArenaComponent } from './components/arena/arena.component';
 import { BattlegroundComponent } from './components/battleground/battleground.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -16,6 +17,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        ArenaComponent,
         BattlegroundComponent,
         FooterComponent,
         HeaderComponent,

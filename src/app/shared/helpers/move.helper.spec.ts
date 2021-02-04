@@ -9,19 +9,28 @@ describe('MoveHelper', () => {
   it('Should get the moves', () => {
     expect(MoveHelper.getMoves()).toBeDefined();
     expect(MoveHelper.getMoves()).toEqual([
-      new Rock(),
-      new Paper(),
       new Scissors(),
+      new Spock(),
+      new Paper(),
       new Lizard(),
-      new Spock()
+      new Rock()
     ]);
   });
 
   it('Should get the move names', () => {
     expect(MoveHelper.getMoveNames()).toBeDefined();
     expect(MoveHelper.getMoveNames()).toEqual([
-      'Rock', 'Paper', 'Scissors',
-      'Lizard', 'Spock'
+      'Scissors', 'Spock', 'Paper', 'Lizard', 'Rock'
     ]);
+  });
+
+  it('Should get a random move', () => {
+    const getRandomMoveSpy: jasmine.Spy = spyOn(
+      MoveHelper,
+      'getRandomMove'
+    ).and.returnValue(new Rock());
+
+    expect(MoveHelper.getRandomMove()).toBeDefined();
+    expect(MoveHelper.getRandomMove()).toEqual(getRandomMoveSpy());
   });
 });

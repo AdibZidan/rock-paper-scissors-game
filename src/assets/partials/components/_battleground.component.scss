@@ -1,4 +1,6 @@
 @import "../shared/center/_center.scss";
+@import "../shared/border/_border.scss";
+@import "../shared/colors/_colors.scss";
 
 @mixin battleground-component {
   section {
@@ -12,18 +14,40 @@
         width: 100%;
 
         img {
+          background-color: #fff;
+          border-radius: 50%;
+          width: 125px;
+          height: 125px;
+          object-fit: contain;
+
           &.scissors {
             align-self: center;
+
+            @include border(8px, $scissors);
           }
 
-          &.spock,
-          &.lizard {
-            align-self: flex-start;
+          &.paper {
+            align-self: flex-end;
+
+            @include border(8px, $paper);
           }
 
-          &.paper,
           &.rock {
             align-self: flex-end;
+
+            @include border(8px, $rock);
+          }
+
+          &.lizard {
+            align-self: flex-start;
+
+            @include border(8px, $lizard);
+          }
+
+          &.spock {
+            align-self: flex-start;
+
+            @include border(8px, $spock);
           }
         }
 

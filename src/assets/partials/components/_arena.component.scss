@@ -1,0 +1,15 @@
+@import "../shared/center/_center.scss";
+
+@mixin arena-component {
+  section {
+    @include center;
+
+    header {
+      h2 {
+        text-transform: uppercase;
+       }
+    }
+
+    img { }
+  }
+}
