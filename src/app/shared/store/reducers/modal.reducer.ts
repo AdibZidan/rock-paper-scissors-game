@@ -6,12 +6,10 @@ const initialModalState: boolean = false;
 const _modalReducer = createReducer(
   initialModalState,
   on(
-    showModal,
-    (state: boolean): boolean => state = true
+    showModal, (): boolean => true
   ),
   on(
-    hideModal,
-    (state: boolean): boolean => state = initialModalState
+    hideModal, (): boolean => false
   )
 );
 
