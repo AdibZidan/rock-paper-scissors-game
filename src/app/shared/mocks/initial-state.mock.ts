@@ -4,11 +4,16 @@ export const initialState: AppState = {
   isModalShown: false,
   move: {
     name: '',
-    image: ''
+    image: '',
+    strengths: [],
+    weaknesses: []
   },
   randomHouseMove: {
     name: '',
-    image: ''
+    image: '',
+    strengths: [],
+    weaknesses: []
   },
-  score: 0
+  score: 0,
+  message: ''
 };

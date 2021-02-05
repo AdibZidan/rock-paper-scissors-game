@@ -30,7 +30,7 @@ export class MoveHelper {
     return moves[this.getRandomIndex(length)];
   }
 
-  private static getRandomIndex(length: number) {
+  private static getRandomIndex(length: number): number {
     return Math.floor(Math.random() * length);
   }
 

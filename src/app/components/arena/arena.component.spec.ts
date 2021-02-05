@@ -1,6 +1,7 @@
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { initialState } from '@mocks/initial-state.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { JudgeComponent } from '../judge/judge.component';
 import { ArenaComponent } from './arena.component';
 
 describe('ArenaComponent', () => {
@@ -11,7 +12,10 @@ describe('ArenaComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ArenaComponent],
+      declarations: [
+        ArenaComponent,
+        JudgeComponent
+      ],
       providers: [provideMockStore({ initialState })]
     }).compileComponents();
   }));

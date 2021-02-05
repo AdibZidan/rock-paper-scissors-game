@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { randomHouseMoveReducer } from '@reducers/house-move.reducer';
+import { messageReducer } from '@reducers/message.reducer';
 import { modalReducer } from '@reducers/modal.reducer';
 import { moveReducer } from '@reducers/move.reducer';
 import { scoreReducer } from '@reducers/scrore.reducer';
@@ -10,6 +11,7 @@ import { ArenaComponent } from './components/arena/arena.component';
 import { BattlegroundComponent } from './components/battleground/battleground.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { JudgeComponent } from './components/judge/judge.component';
 import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
@@ -19,6 +21,7 @@ import { ModalComponent } from './components/modal/modal.component';
     BattlegroundComponent,
     FooterComponent,
     HeaderComponent,
+    JudgeComponent,
     ModalComponent
   ],
   imports: [
@@ -27,7 +30,8 @@ import { ModalComponent } from './components/modal/modal.component';
       isModalShown: modalReducer,
       move: moveReducer,
       randomHouseMove: randomHouseMoveReducer,
-      score: scoreReducer
+      score: scoreReducer,
+      message: messageReducer
     })
   ],
   bootstrap: [AppComponent]
