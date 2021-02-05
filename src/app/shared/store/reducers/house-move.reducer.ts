@@ -5,7 +5,9 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 const initialRandomHouseMoveState: Move = {
   name: '',
-  image: ''
+  image: '',
+  strengths: [],
+  weaknesses: []
 };
 
 const _randomHouseMoveReducer = createReducer(

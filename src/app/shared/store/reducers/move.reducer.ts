@@ -8,7 +8,7 @@ const _moveReducer = createReducer(
   initialMoveState,
   on(
     selectMove,
-    (state: undefined | Move, { name, image }): Move => ({ name, image })
+    (state: undefined | Move, { name, image, strengths, weaknesses }): Move => ({ name, image, strengths, weaknesses })
   )
 );
 
