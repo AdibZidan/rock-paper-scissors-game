@@ -5,4 +5,5 @@ export interface AppState {
   move: Move;
   randomHouseMove: Move;
   score: number;
+  message: string;
 }
