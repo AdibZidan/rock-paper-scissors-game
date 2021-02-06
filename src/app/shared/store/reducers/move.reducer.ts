@@ -1,20 +1,39 @@
 import { selectMove } from '@actions/move.actions';
-import { Move } from '@interfaces/move.interface';
+import { MoveHelper } from '@helpers/move.helper';
+import { Moves } from '@interfaces/moves.interface';
 import { Action, createReducer, on } from '@ngrx/store';
 
-const initialMoveState: undefined | Move = undefined;
+const initialMovesState: Moves = {
+  move: {
+    name: '',
+    image: '',
+    strengths: [],
+    weaknesses: []
+  },
+  randomHouseMove: {
+    name: '',
+    image: '',
+    strengths: [],
+    weaknesses: []
+  }
+};
 
 const _moveReducer = createReducer(
-  initialMoveState,
+  initialMovesState,
   on(
     selectMove,
-    (state: undefined | Move, { name, image, strengths, weaknesses }): Move => ({ name, image, strengths, weaknesses })
+    (state, action) => {
+      return ({
+        move: action,
+        randomHouseMove: MoveHelper.getRandomMove()
+      });
+    }
   )
 );
 
 export function moveReducer(
-  state: undefined | Move,
+  state: undefined | Moves,
   action: Action
-): undefined | Move {
+): Moves {
   return _moveReducer(state, action);
 }

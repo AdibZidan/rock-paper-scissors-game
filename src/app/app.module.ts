@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { randomHouseMoveReducer } from '@reducers/house-move.reducer';
 import { messageReducer } from '@reducers/message.reducer';
 import { modalReducer } from '@reducers/modal.reducer';
 import { moveReducer } from '@reducers/move.reducer';
-import { scoreReducer } from '@reducers/scrore.reducer';
+import { scoreReducer } from '@reducers/score.reducer';
 import { AppComponent } from './app.component';
 import { ArenaComponent } from './components/arena/arena.component';
 import { BattlegroundComponent } from './components/battleground/battleground.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { JudgeComponent } from './components/judge/judge.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { MoveEffects } from './shared/store/effects/move.effects';
 
 @NgModule({
   declarations: [
@@ -21,18 +21,17 @@ import { ModalComponent } from './components/modal/modal.component';
     BattlegroundComponent,
     FooterComponent,
     HeaderComponent,
-    JudgeComponent,
     ModalComponent
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({
       isModalShown: modalReducer,
-      move: moveReducer,
-      randomHouseMove: randomHouseMoveReducer,
+      moves: moveReducer,
       score: scoreReducer,
       message: messageReducer
-    })
+    }),
+    EffectsModule.forRoot([MoveEffects])
   ],
   bootstrap: [AppComponent]
 })

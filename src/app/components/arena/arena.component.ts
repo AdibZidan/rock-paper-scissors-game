@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppState } from '@interfaces/app-state.interface';
 import { Move } from '@interfaces/move.interface';
 import { Store } from '@ngrx/store';
+import { selectMove, selectRandomHouseMove } from '@selectors/move.selector';
 import { Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-arena',
@@ -14,20 +14,16 @@ export class ArenaComponent implements OnInit {
 
   public move$!: Observable<Move>;
   public randomHouseMove$!: Observable<Move>;
+  public message$!: Observable<string>;
 
   constructor(
     private store$: Store<AppState>
   ) { }
 
   public ngOnInit(): void {
-    this.move$ = this.store$.select('move');
-    this.randomHouseMove$ = this.getDelayedRandomHouseMove$();
-  }
-
-  private getDelayedRandomHouseMove$(): Observable<Move> {
-    return this.store$
-      .select('randomHouseMove')
-      .pipe(delay(500));
+    this.move$ = this.store$.select(selectMove);
+    this.randomHouseMove$ = this.store$.select(selectRandomHouseMove);
+    this.message$ = this.store$.select('message');
   }
 
 }

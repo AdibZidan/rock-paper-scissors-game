@@ -1,7 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Move } from '@interfaces/move.interface';
 import { initialState } from '@mocks/initial-state.mock';
+import { moveMock } from '@mocks/move.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { JudgeComponent } from '../judge/judge.component';
+import { selectMove, selectRandomHouseMove } from '@selectors/move.selector';
 import { ArenaComponent } from './arena.component';
 
 describe('ArenaComponent', () => {
@@ -12,10 +14,7 @@ describe('ArenaComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ArenaComponent,
-        JudgeComponent
-      ],
+      declarations: [ArenaComponent],
       providers: [provideMockStore({ initialState })]
     }).compileComponents();
   }));
@@ -41,21 +40,36 @@ describe('ArenaComponent', () => {
   });
 
   describe('After initialization', () => {
-    let selectSpy: jasmine.Spy;
-
     beforeEach(() => {
-      selectSpy = spyOn(mockStore, 'select').and.callThrough();
-
       component.ngOnInit();
+      mockStore.resetSelectors();
     });
 
-    it('Should select the move and the randomHouseMove from the store', fakeAsync(() => {
-      tick(500);
+    it('Should select the move from the store', (doneFn: DoneFn) => {
+      mockStore.overrideSelector(selectMove, moveMock);
 
-      expect(selectSpy.calls.first().args).toEqual(['move']);
-      expect(selectSpy.calls.mostRecent().args).toEqual(['randomHouseMove']);
-      expect(selectSpy.calls.count()).toEqual(2);
-    }));
+      expect(component.move$).toBeDefined();
+      component.move$.subscribe((actualMove: Move): void => {
+        expect(actualMove).toEqual(moveMock);
+
+        doneFn();
+      });
+    });
+
+    it('Should select the random house move from the store', (doneFn: DoneFn) => {
+      mockStore.overrideSelector(selectRandomHouseMove, moveMock);
+
+      expect(component.randomHouseMove$).toBeDefined();
+      component.randomHouseMove$.subscribe((actualRandomHouseMove: Move): void => {
+        expect(actualRandomHouseMove).toEqual(moveMock);
+
+        doneFn();
+      });
+    });
+
+    it('Should select the message from the store', () => {
+      expect(component.message$).toBeDefined();
+    });
   });
 
 });

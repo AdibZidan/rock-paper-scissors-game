@@ -1,4 +1,3 @@
-import { selectRandomHouseMove } from '@actions/house-move.actions';
 import { selectMove } from '@actions/move.actions';
 import { Component } from '@angular/core';
 import { MoveHelper } from '@helpers/move.helper';
@@ -21,7 +20,6 @@ export class BattlegroundComponent {
 
   public selectMove(move: Move): void {
     this.store$.dispatch(selectMove(move));
-    this.store$.dispatch(selectRandomHouseMove());
   }
 
 }

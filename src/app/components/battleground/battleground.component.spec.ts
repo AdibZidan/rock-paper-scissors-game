@@ -1,8 +1,9 @@
-import { selectRandomHouseMove } from '@actions/house-move.actions';
+import { selectMove } from '@actions/move.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { initialState } from '@mocks/initial-state.mock';
 import { Rock } from '@models/rock.model';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { ArenaComponent } from '../arena/arena.component';
 import { BattlegroundComponent } from './battleground.component';
 
 describe('BattlegroundComponent', () => {
@@ -13,7 +14,10 @@ describe('BattlegroundComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [BattlegroundComponent],
+      declarations: [
+        ArenaComponent,
+        BattlegroundComponent
+      ],
       providers: [provideMockStore({ initialState })]
     }).compileComponents();
   }));
@@ -28,7 +32,7 @@ describe('BattlegroundComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should select and dispatch a move and a randomHouseMove', () => {
+  it('Should select and dispatch a move', () => {
     const dispatchSpy = spyOn(mockStore, 'dispatch');
 
     component.selectMove(new Rock());
@@ -38,14 +42,10 @@ describe('BattlegroundComponent', () => {
       image: '/assets/images/icon-rock.svg',
       strengths: ['Lizard', 'Scissors'],
       weaknesses: ['Spock', 'Paper'],
-      type: 'Select a Move'
+      type: selectMove.type
     }] as any);
 
-    expect(dispatchSpy.calls.mostRecent().args).toEqual([{
-      type: selectRandomHouseMove.type
-    }]);
-
-    expect(dispatchSpy.calls.count()).toEqual(2);
+    expect(dispatchSpy.calls.count()).toEqual(1);
   });
 
 });

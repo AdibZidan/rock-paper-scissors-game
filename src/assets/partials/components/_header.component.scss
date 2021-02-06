@@ -2,6 +2,12 @@
 @import "../shared/border/_border.scss";
 
 @mixin header-component {
+  div {
+    &.top {
+      padding-top: 100px;
+    }
+  }
+
   header {
     display: flex;
     justify-content: space-between;

@@ -1,25 +1,29 @@
 <ng-container *ngIf="move$ | async as move">
-  <section>
-    <header>
-      <h2>
-        You've picked
-      </h2>
-
-      <img
-        [src]="move.image"
-        [alt]="move.name">
-
+  <ng-container *ngIf="move.name">
+    <section>
+      <header>
         <h2>
-          The House picked
+          You've picked
         </h2>
 
-      <ng-container *ngIf="randomHouseMove$ | async as randomHouseMove">
         <img
-          [src]="randomHouseMove.image"
-          [alt]="randomHouseMove.name">
-      </ng-container>
-    </header>
+          [src]="move.image"
+          [alt]="move.name">
 
-    <app-judge></app-judge>
-  </section>
+          <h2>
+            The House picked
+          </h2>
+
+        <ng-container *ngIf="randomHouseMove$ | async as randomHouseMove">
+          <img
+            [src]="randomHouseMove.image"
+            [alt]="randomHouseMove.name">
+        </ng-container>
+      </header>
+
+      <ng-container *ngIf="message$ | async as message">
+        {{ message }}
+      </ng-container>
+    </section>
+  </ng-container>
 </ng-container>

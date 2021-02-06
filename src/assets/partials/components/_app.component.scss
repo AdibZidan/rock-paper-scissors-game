@@ -3,11 +3,5 @@
 @mixin app-component {
   main {
     background-color: $background-color;
-
-    div {
-      &.top {
-        padding-top: 100px;
-      }
-    }
   }
 }

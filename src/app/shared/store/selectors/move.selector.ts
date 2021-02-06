@@ -1,9 +1,16 @@
 import { AppState } from '@interfaces/app-state.interface';
-import { createSelector } from '@ngrx/store';
+import { Move } from '@interfaces/move.interface';
+import { Moves } from '@interfaces/moves.interface';
+import { createSelector, MemoizedSelector } from '@ngrx/store';
 
-const initialAppState = (state: AppState): AppState => state;
+const initialMovesState = (state: AppState): Moves => state.moves;
 
-export const selectMoveAndRandomHouseMove = createSelector(
-  initialAppState,
-  ({ move, randomHouseMove }) => ({ move, randomHouseMove })
+export const selectMove: MemoizedSelector<AppState, Move> = createSelector(
+  initialMovesState,
+  ({ move }): Move => move
+);
+
+export const selectRandomHouseMove: MemoizedSelector<AppState, Move> = createSelector(
+  initialMovesState,
+  ({ randomHouseMove }): Move => randomHouseMove
 );

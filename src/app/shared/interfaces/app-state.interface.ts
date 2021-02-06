@@ -1,9 +1,8 @@
-import { Move } from './move.interface';
+import { Moves } from './moves.interface';
 
 export interface AppState {
   isModalShown: boolean;
-  move: Move;
-  randomHouseMove: Move;
+  moves: Moves;
   score: number;
   message: string;
 }
