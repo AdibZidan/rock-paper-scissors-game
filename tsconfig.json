@@ -38,6 +38,9 @@
       ],
       "@reducers/*": [
         "src/app/shared/store/reducers/*"
+      ],
+      "@selectors/*": [
+        "src/app/shared/store/selectors/*"
       ]
     }
   },
