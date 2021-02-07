@@ -1,5 +1,5 @@
 import { showMessage } from '@actions/message.actions';
-import { selectMove } from '@actions/move.actions';
+import { chooseMove, chooseWinner } from '@actions/move.actions';
 import { decrementScore, incrementScore } from '@actions/score.actions';
 import { Injectable } from '@angular/core';
 import { AppState } from '@interfaces/app-state.interface';
@@ -18,7 +18,7 @@ export class MoveEffects {
   ) { }
 
   public determineWinner$ = createEffect((): Observable<AppState> => this.actions$.pipe(
-    ofType(selectMove.type),
+    ofType(chooseMove.type),
     withLatestFrom(this.store$),
     switchMap(([move, appState]) => of(appState)),
     tap((appState: AppState): void => {
@@ -33,11 +33,13 @@ export class MoveEffects {
     }
 
     if (this.isSelectedMoveStronger(move, randomHouseMove)) {
+      this.store$.dispatch(chooseWinner(move));
       this.store$.dispatch(showMessage({ message: 'You win!' }));
       this.store$.dispatch(incrementScore());
     }
 
     if (this.isSelectedMoveWeaker(move, randomHouseMove)) {
+      this.store$.dispatch(chooseWinner(randomHouseMove));
       this.store$.dispatch(showMessage({ message: 'You lose!' }));
       this.store$.dispatch(decrementScore());
     }

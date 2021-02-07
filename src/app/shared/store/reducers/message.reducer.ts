@@ -1,9 +1,9 @@
 import { showMessage } from '@actions/message.actions';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 
 const initialMessageState: string = '';
 
-const _messageReducer = createReducer(
+const _messageReducer: ActionReducer<string, Action> = createReducer(
   initialMessageState,
   on(
     showMessage,
@@ -14,6 +14,6 @@ const _messageReducer = createReducer(
 export function messageReducer(
   state: undefined | string,
   action: Action
-) {
+): string {
   return _messageReducer(state, action);
 }

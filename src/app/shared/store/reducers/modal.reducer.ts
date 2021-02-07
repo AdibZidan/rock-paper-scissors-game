@@ -1,9 +1,9 @@
 import { hideModal, showModal } from '@actions/modal.actions';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 
 const initialModalState: boolean = false;
 
-const _modalReducer = createReducer(
+const _modalReducer: ActionReducer<boolean, Action> = createReducer(
   initialModalState,
   on(
     showModal, (): boolean => true

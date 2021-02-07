@@ -1,4 +1,4 @@
-import { selectMove } from '@actions/move.actions';
+import { chooseMove } from '@actions/move.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { initialState } from '@mocks/initial-state.mock';
 import { Rock } from '@models/rock.model';
@@ -32,17 +32,17 @@ describe('BattlegroundComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should select and dispatch a move', () => {
+  it('Should choose and dispatch a move', () => {
     const dispatchSpy = spyOn(mockStore, 'dispatch');
 
-    component.selectMove(new Rock());
+    component.chooseMove(new Rock());
 
     expect(dispatchSpy.calls.first().args).toEqual([{
       name: 'Rock',
       image: '/assets/images/icon-rock.svg',
       strengths: ['Lizard', 'Scissors'],
       weaknesses: ['Spock', 'Paper'],
-      type: selectMove.type
+      type: chooseMove.type
     }] as any);
 
     expect(dispatchSpy.calls.count()).toEqual(1);

@@ -1,7 +1,7 @@
-import { selectMove } from '@actions/move.actions';
+import { chooseMove, chooseWinner } from '@actions/move.actions';
 import { MoveHelper } from '@helpers/move.helper';
 import { Moves } from '@interfaces/moves.interface';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 
 const initialMovesState: Moves = {
   move: {
@@ -18,15 +18,29 @@ const initialMovesState: Moves = {
   }
 };
 
-const _moveReducer = createReducer(
+const _moveReducer: ActionReducer<Moves, Action> = createReducer(
   initialMovesState,
   on(
-    selectMove,
+    chooseMove,
+    (state, action) => ({
+      move: action,
+      randomHouseMove: MoveHelper.getRandomMove()
+    })
+  ),
+  on(
+    chooseWinner,
     (state, action) => {
-      return ({
-        move: action,
-        randomHouseMove: MoveHelper.getRandomMove()
-      });
+      if (action.name === state.move.name) {
+        return {
+          move: { ...action, isWinner: true },
+          randomHouseMove: state.randomHouseMove
+        };
+      } else {
+        return {
+          move: state.move,
+          randomHouseMove: { ...action, isWinner: true }
+        };
+      }
     }
   )
 );

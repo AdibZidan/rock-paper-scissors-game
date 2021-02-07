@@ -1,4 +1,4 @@
-import { selectMove } from '@actions/move.actions';
+import { chooseMove } from '@actions/move.actions';
 import { Component } from '@angular/core';
 import { MoveHelper } from '@helpers/move.helper';
 import { AppState } from '@interfaces/app-state.interface';
@@ -18,8 +18,8 @@ export class BattlegroundComponent {
     private store$: Store<AppState>
   ) { }
 
-  public selectMove(move: Move): void {
-    this.store$.dispatch(selectMove(move));
+  public chooseMove(move: Move): void {
+    this.store$.dispatch(chooseMove(move));
   }
 
 }

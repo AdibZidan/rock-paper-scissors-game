@@ -1,9 +1,9 @@
 import { decrementScore, incrementScore } from '@actions/score.actions';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 
 const initialScoreState: number = 0;
 
-const _scoreReducer = createReducer(
+const _scoreReducer: ActionReducer<number, Action> = createReducer(
   initialScoreState,
   on(
     incrementScore,

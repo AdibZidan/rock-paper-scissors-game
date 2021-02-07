@@ -3,27 +3,43 @@
     <section>
       <header>
         <h2>
-          You've picked
+          <span class="pick">
+            You picked
+          </span>
+
+          <img
+            [class.is-winner]="move.isWinner"
+            [class]="move.name.toLowerCase()"
+            [src]="move.image"
+            [alt]="move.name">
         </h2>
 
-        <img
-          [src]="move.image"
-          [alt]="move.name">
+        <ng-container *ngIf="message$ | async as message">
+          <div class="center">
+            <button>
+              Play Again
+            </button>
 
-          <h2>
-            The House picked
-          </h2>
-
-        <ng-container *ngIf="randomHouseMove$ | async as randomHouseMove">
-          <img
-            [src]="randomHouseMove.image"
-            [alt]="randomHouseMove.name">
+            <p class="message">
+              {{ message }}
+            </p>
+          </div>
         </ng-container>
-      </header>
 
-      <ng-container *ngIf="message$ | async as message">
-        {{ message }}
-      </ng-container>
+        <h2>
+          <span class="pick">
+            The House picked
+          </span>
+
+          <ng-container *ngIf="randomHouseMove$ | async as randomHouseMove">
+            <img
+              [class.is-winner]="randomHouseMove.isWinner"
+              [class]="randomHouseMove.name.toLowerCase()"
+              [src]="randomHouseMove.image"
+              [alt]="randomHouseMove.name">
+          </ng-container>
+        </h2>
+      </header>
     </section>
   </ng-container>
 </ng-container>

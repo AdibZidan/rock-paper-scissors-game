@@ -1,15 +1,65 @@
 @import "../shared/center/_center.scss";
+@import "../components/_button.scss";
+@import "../shared/image/_image.scss";
 
 @mixin arena-component {
   section {
-    @include center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+    height: 500px;
 
     header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
       h2 {
+        font-size: 1.4rem;
         text-transform: uppercase;
-       }
+        text-align: center;
+        margin: 10px 0;
+        padding: 0 10px;
+
+        span {
+          &.pick {
+            display: inline-block;
+            margin: 10px 0;
+          }
+        }
+
+        @include image;
+
+        img {
+          width: 260px;
+          height: 260px;
+          object-fit: contain;
+          border-width: 20px !important;
+        }
+      }
+
+      div {
+        &.center {
+          display: flex;
+          justify-content: space-evenly;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          height: 50%;
+        }
+      }
     }
 
-    img { }
+    p {
+      &.message {
+        margin-top: 10px;
+        font-size: 2.4rem;
+        text-align: center;
+      }
+    }
+
+    @include center;
+    @include button;
   }
 }
