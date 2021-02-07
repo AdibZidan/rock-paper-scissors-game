@@ -24,6 +24,9 @@
       "@helpers/*": [
         "src/app/shared/helpers/*"
       ],
+      "@enums/*": [
+        "src/app/shared/enums/*"
+      ],
       "@interfaces/*": [
         "src/app/shared/interfaces/*"
       ],

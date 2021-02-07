@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { messageReducer } from '@reducers/message.reducer';
-import { modalReducer } from '@reducers/modal.reducer';
 import { moveReducer } from '@reducers/move.reducer';
 import { scoreReducer } from '@reducers/score.reducer';
+import { viewReducer } from '@reducers/view.reducer';
 import { AppComponent } from './app.component';
 import { ArenaComponent } from './components/arena/arena.component';
 import { BattlegroundComponent } from './components/battleground/battleground.component';
@@ -26,7 +26,7 @@ import { MoveEffects } from './shared/store/effects/move.effects';
   imports: [
     BrowserModule,
     StoreModule.forRoot({
-      isModalShown: modalReducer,
+      views: viewReducer,
       moves: moveReducer,
       score: scoreReducer,
       message: messageReducer

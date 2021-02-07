@@ -1,7 +1,8 @@
 import { AppState } from '@interfaces/app-state.interface';
+import { viewsMock } from './views.mock';
 
 export const initialState: AppState = {
-  isModalShown: false,
+  views: viewsMock,
   moves: {
     move: {
       name: '',
