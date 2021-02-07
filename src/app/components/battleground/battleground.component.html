@@ -1,15 +1,18 @@
 <section>
-  <img src="/assets/images/bg-pentagon.svg" alt="Pentagon">
+  <ng-container *ngIf="(view$ | async)?.isShown">
+    <img src="/assets/images/bg-pentagon.svg" alt="Pentagon">
 
-  <div class="images-container">
-    <ng-container *ngFor="let move of moves">
-      <img
-        [class]="move.name.toLowerCase()"
-        [src]="move.image"
-        [alt]="move.name"
-        (click)="chooseMove(move)">
-    </ng-container>
-  </div>
+    <div class="images-container">
+      <ng-container *ngFor="let move of moves">
+        <img
+          [class]="move.name.toLowerCase()"
+          [src]="move.image"
+          [alt]="move.name"
+          (click)="chooseMove(move)"
+          (click)="updateView()">
+      </ng-container>
+    </div>
+  </ng-container>
 
   <app-arena></app-arena>
 </section>

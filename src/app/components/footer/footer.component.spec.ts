@@ -1,5 +1,6 @@
-import { showModal } from '@actions/modal.actions';
+import { showView } from '@actions/view.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ViewType } from '@enums/view-type.enum';
 import { initialState } from '@mocks/initial-state.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ModalComponent } from '../modal/modal.component';
@@ -38,7 +39,8 @@ describe('FooterComponent', () => {
 
     expect(dispatchSpy).toHaveBeenCalled();
     expect(dispatchSpy).toHaveBeenCalledWith({
-      type: showModal.type
+      viewType: ViewType.MODAL,
+      type: showView.type
     });
     expect(dispatchSpy).toHaveBeenCalledTimes(1);
   });

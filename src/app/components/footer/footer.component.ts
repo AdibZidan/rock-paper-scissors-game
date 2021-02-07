@@ -1,5 +1,6 @@
-import { showModal } from '@actions/modal.actions';
+import { showView } from '@actions/view.actions';
 import { Component } from '@angular/core';
+import { ViewType } from '@enums/view-type.enum';
 import { AppState } from '@interfaces/app-state.interface';
 import { Store } from '@ngrx/store';
 
@@ -15,7 +16,7 @@ export class FooterComponent {
   ) { }
 
   public showModal(): void {
-    this.store$.dispatch(showModal());
+    this.store$.dispatch(showView({ viewType: ViewType.MODAL }));
   }
 
 }

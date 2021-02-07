@@ -1,4 +1,4 @@
-<ng-container *ngIf="isModalShown$ | async">
+<ng-container *ngIf="(view$ | async)?.isShown">
   <div class="overlay"></div>
 
   <div class="rules-container">
