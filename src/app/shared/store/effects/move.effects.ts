@@ -2,12 +2,13 @@ import { showMessage } from '@actions/message.actions';
 import { chooseMove, chooseWinner } from '@actions/move.actions';
 import { decrementScore, incrementScore } from '@actions/score.actions';
 import { Injectable } from '@angular/core';
+import { DELAY_TIME } from '@helpers/store.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Move } from '@interfaces/move.interface';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { delay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Injectable()
 export class MoveEffects {
@@ -17,15 +18,20 @@ export class MoveEffects {
     private store$: Store<AppState>
   ) { }
 
-  public determineWinner$ = createEffect((): Observable<AppState> => this.actions$.pipe(
+  public judge$ = createEffect((): Observable<AppState> => this.actions$.pipe(
     ofType(chooseMove.type),
     withLatestFrom(this.store$),
     switchMap(([move, appState]) => of(appState)),
-    tap((appState: AppState): void => {
-      const { move, randomHouseMove } = appState.moves;
+    tap(({ moves }): void => this.judge(moves.move, moves.randomHouseMove))
+  ), { dispatch: false });
 
-      this.judge(move, randomHouseMove);
-    })), { dispatch: false });
+  public determineWinner$ = createEffect((): Observable<AppState> => this.actions$.pipe(
+    ofType(incrementScore.type),
+    withLatestFrom(this.store$),
+    switchMap(([move, appState]) => of(appState)),
+    delay(DELAY_TIME),
+    tap(({ moves }): void => this.store$.dispatch(chooseWinner(moves.move)))
+  ), { dispatch: false });
 
   private judge(move: Move, randomHouseMove: Move): void {
     if (this.areMovesIdentical(move, randomHouseMove)) {
@@ -33,7 +39,6 @@ export class MoveEffects {
     }
 
     if (this.isSelectedMoveStronger(move, randomHouseMove)) {
-      this.store$.dispatch(chooseWinner(move));
       this.store$.dispatch(showMessage({ message: 'You win!' }));
       this.store$.dispatch(incrementScore());
     }

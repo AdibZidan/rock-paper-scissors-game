@@ -8,8 +8,7 @@
           [class]="move.name.toLowerCase()"
           [src]="move.image"
           [alt]="move.name"
-          (click)="chooseMove(move)"
-          (click)="updateView()">
+          (click)="[chooseMove(move), updateView()]">
       </ng-container>
     </div>
   </ng-container>

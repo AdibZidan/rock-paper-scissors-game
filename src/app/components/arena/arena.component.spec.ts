@@ -1,6 +1,8 @@
 import { hideView, showView } from '@actions/view.actions';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewType } from '@enums/view-type.enum';
+import { DELAY_TIME } from '@helpers/store.helper';
 import { Move } from '@interfaces/move.interface';
 import { initialState } from '@mocks/initial-state.mock';
 import { moveMock } from '@mocks/move.mock';
@@ -17,6 +19,7 @@ describe('ArenaComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ArenaComponent],
+      imports: [BrowserAnimationsModule],
       providers: [provideMockStore({ initialState })]
     }).compileComponents();
   }));
@@ -71,21 +74,23 @@ describe('ArenaComponent', () => {
       });
     });
 
-    it('Should select the random house move from the store', (doneFn: DoneFn) => {
+    it('Should select the random house move from the store', fakeAsync(() => {
       mockStore.overrideSelector(selectRandomHouseMove, moveMock);
 
       expect(component.randomHouseMove$).toBeDefined();
 
       component.randomHouseMove$.subscribe((actualRandomHouseMove: Move): void => {
         expect(actualRandomHouseMove).toEqual(moveMock);
-
-        doneFn();
       });
-    });
 
-    it('Should select the message from the store', () => {
+      tick(DELAY_TIME);
+    }));
+
+    it('Should select the message from the store', fakeAsync(() => {
+      tick(DELAY_TIME);
+
       expect(component.message$).toBeDefined();
-    });
+    }));
 
     it('Should hide the arena and show the battleground', () => {
       const dispatchSpy = spyOn(mockStore, 'dispatch');
