@@ -42,4 +42,8 @@ export class BattlegroundComponent implements OnInit {
     this.store$.dispatch(hideView({ viewType: ViewType.BATTLEGROUND }));
   }
 
+  public trackByFn(index: number, move: Move): number {
+    return index;
+  }
+
 }

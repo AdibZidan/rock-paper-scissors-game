@@ -46,7 +46,7 @@ describe('BattlegroundComponent', () => {
     it('Should have a defined props property', () => {
       expect(component.props).toEqual({
         value: 'fades slowly in',
-        params: { timing: '0.5s' }
+        params: { timing: '0.2s' }
       });
     });
   });
@@ -92,6 +92,14 @@ describe('BattlegroundComponent', () => {
       }] as any);
 
       expect(dispatchSpy.calls.count()).toEqual(2);
+    });
+
+    it('Should track the moves by their index', () => {
+      const indexes: number[] = [0, 1, 2, 3, 4, 5];
+
+      indexes.forEach((index: number): void => {
+        expect(component.trackByFn(index, new Rock())).toEqual(index);
+      });
     });
   });
 
