@@ -32,6 +32,13 @@ describe('ModalComponent', () => {
     it('Should have an undefined view$ property', () => {
       expect(component.view$).toBeUndefined();
     });
+
+    it('Should have a defined props property', () => {
+      expect(component.props).toEqual({
+        value: 'fades slowly in',
+        params: { timing: '0.5s' }
+      });
+    });
   });
 
   describe('After initialization', () => {

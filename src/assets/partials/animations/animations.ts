@@ -1,4 +1,7 @@
-import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
+import {
+  animate, AnimationTriggerMetadata,
+  style, transition, trigger
+} from '@angular/animations';
 
 export const popUp: AnimationTriggerMetadata = trigger('popUp', [
   transition(':enter', [
@@ -10,6 +13,13 @@ export const popUp: AnimationTriggerMetadata = trigger('popUp', [
 export const fadeIn: AnimationTriggerMetadata = trigger('fadeIn', [
   transition(':enter', [
     style({ opacity: 0 }),
-    animate('2s', style({ opacity: 1 }))
+    animate('{{ timing }}', style({ opacity: 1 }))
+  ], { params: { timing: '2s' } })
+]);
+
+export const fadeOut: AnimationTriggerMetadata = trigger('fadeOut', [
+  transition(':leave', [
+    style({ opacity: 1 }),
+    animate('250ms', style({ opacity: 0 }))
   ])
 ]);

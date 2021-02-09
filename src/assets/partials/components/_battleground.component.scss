@@ -7,16 +7,48 @@
   section {
     @include center;
 
-    div {
+    figure {
       &.images-container {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
 
+        img {
+          cursor: pointer;
+          background-color: #fff;
+          border-radius: 50%;
+          position: relative;
+          transition: 0.5s linear;
+
+          &.scissors {
+            top: 80px;
+          }
+
+          &.spock {
+            left: -50px;
+            bottom: -75px;
+          }
+
+          &.paper {
+            top: -45px;
+            right: -40px;
+          }
+
+          &.rock {
+            bottom: 125px;
+            right: -5px;
+          }
+
+          &:hover {
+            background-color: #ccc;
+          }
+        }
+
         @include center;
-        @include image;
       }
     }
+
+    @include image;
   }
 }

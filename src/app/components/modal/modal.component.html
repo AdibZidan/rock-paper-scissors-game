@@ -1,7 +1,10 @@
 <ng-container *ngIf="(view$ | async)?.isShown">
   <div class="overlay"></div>
 
-  <div class="rules-container">
+  <div
+    @fadeOut
+    class="rules-container"
+    [@fadeIn]="props">
     <h3>
       <span class="rules">
         Rules

@@ -42,6 +42,13 @@ describe('BattlegroundComponent', () => {
     it('Should have a defined moves property', () => {
       expect(component.moves).toBeDefined();
     });
+
+    it('Should have a defined props property', () => {
+      expect(component.props).toEqual({
+        value: 'fades slowly in',
+        params: { timing: '0.5s' }
+      });
+    });
   });
 
   describe('After initialization', () => {

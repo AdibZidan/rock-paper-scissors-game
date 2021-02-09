@@ -2,7 +2,7 @@
   <ng-container *ngIf="(view$ | async)?.isShown">
     <img src="/assets/images/bg-pentagon.svg" alt="Pentagon">
 
-    <div class="images-container">
+    <figure [@fadeIn]="props" class="images-container">
       <ng-container *ngFor="let move of moves">
         <img
           [class]="move.name.toLowerCase()"
@@ -10,7 +10,7 @@
           [alt]="move.name"
           (click)="[chooseMove(move), updateView()]">
       </ng-container>
-    </div>
+    </figure>
   </ng-container>
 
   <app-arena></app-arena>

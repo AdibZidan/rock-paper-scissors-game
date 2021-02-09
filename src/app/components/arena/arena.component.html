@@ -7,12 +7,15 @@
             You picked
           </span>
 
-          <img
-            @popUp
+          <figure
             [class.is-winner]="move.isWinner"
-            [class]="move.name.toLowerCase()"
-            [src]="move.image"
-            [alt]="move.name">
+            [class]="move.name.toLowerCase()">
+
+            <img
+              @popUp
+              [src]="move.image"
+              [alt]="move.name">
+          </figure>
         </h2>
 
         <ng-container *ngIf="message$ | async as message">
@@ -33,12 +36,15 @@
           </span>
 
           <ng-container *ngIf="randomHouseMove$ | async as randomHouseMove; else anonymous">
-            <img
-              @popUp
+            <figure
               [class.is-winner]="randomHouseMove.isWinner"
-              [class]="randomHouseMove.name.toLowerCase()"
-              [src]="randomHouseMove.image"
-              [alt]="randomHouseMove.name">
+              [class]="randomHouseMove.name.toLowerCase()">
+
+              <img
+                @popUp
+                [src]="randomHouseMove.image"
+                [alt]="randomHouseMove.name">
+            </figure>
           </ng-container>
 
           <ng-template #anonymous>
