@@ -1,0 +1,43 @@
+@mixin media-queries {
+  @media (min-width: 320px) and (max-width: 480px),
+    (min-width: 481px) and (max-width: 767px),
+    (min-width: 768px) and (max-width: 1024px) {
+    div {
+      &.top {
+        padding-top: 40px;
+      }
+    }
+
+    header {
+      width: 60%;
+      height: 120px;
+
+      @include border(1px, $main-color);
+
+      nav {
+        li {
+          line-height: 0.9;
+          font-size: 1.1rem;
+        }
+      }
+
+      div {
+        width: 30%;
+        height: 80%;
+        padding: 0;
+
+        &.score-container {
+          span {
+            &:first-child {
+              font-size: 1rem;
+            }
+
+            &:last-child {
+              font-size: 3.4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

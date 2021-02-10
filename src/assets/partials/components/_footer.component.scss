@@ -1,5 +1,6 @@
 @import "./_button.scss";
 @import "../shared/colors/_colors.scss";
+@import "../media-queries/_footer.component.media-queries.scss";
 
 @mixin footer-component {
   footer {
@@ -10,4 +11,6 @@
 
     @include button;
   }
+
+  @include media-queries;
 }

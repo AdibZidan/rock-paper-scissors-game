@@ -1,10 +1,11 @@
 @import "../shared/colors/_colors.scss";
 @import "../shared/border/_border.scss";
+@import "../media-queries/_header.component.media-queries.scss";
 
 @mixin header-component {
   div {
     &.top {
-      padding-top: 100px;
+      padding-top: 80px;
     }
   }
 
@@ -57,4 +58,6 @@
       }
     }
   }
+
+  @include media-queries;
 }

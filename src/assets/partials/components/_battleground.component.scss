@@ -2,6 +2,7 @@
 @import "../shared/border/_border.scss";
 @import "../shared/colors/_colors.scss";
 @import "../shared/image/_image.scss";
+@import "../media-queries/_battleground.component.media-queries.scss";
 
 @mixin battleground-component {
   section {
@@ -50,4 +51,6 @@
 
     @include image;
   }
+
+  @include media-queries;
 }

@@ -1,5 +1,6 @@
 @import "../shared/overlay/_overlay.scss";
 @import "../shared/center/_center.scss";
+@import "../media-queries/_modal.component-media-queries.scss";
 
 @mixin modal-component {
   div {
@@ -46,4 +47,6 @@
       }
     }
   }
+
+  @include media-queries;
 }

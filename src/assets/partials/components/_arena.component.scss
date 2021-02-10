@@ -2,6 +2,7 @@
 @import "../components/_button.scss";
 @import "../shared/image/_image.scss";
 @import "../shared/colors/_colors.scss";
+@import "../media-queries/_arena.component.media-queries.scss";
 
 @mixin arena-component {
   section {
@@ -91,4 +92,6 @@
     @include button;
     @include image;
   }
+
+  @include media-queries;
 }
