@@ -37,6 +37,13 @@ describe('HeaderComponent', () => {
     it('Should have an undefined score$ property', () => {
       expect(component.score$).toBeUndefined();
     });
+
+    it('Should have a defined props property', () => {
+      expect(component.props).toEqual({
+        value: 'fades slowly in',
+        params: { timing: '0.2s' }
+      });
+    });
   });
 
   describe('After initialization', () => {

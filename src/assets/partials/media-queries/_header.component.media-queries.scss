@@ -12,8 +12,6 @@
       width: 60%;
       height: 120px;
 
-      @include border(1px, $main-color);
-
       nav {
         li {
           line-height: 0.9;
