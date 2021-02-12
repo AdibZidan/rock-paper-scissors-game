@@ -69,7 +69,7 @@ describe('BattlegroundComponent', () => {
 
       expect(dispatchSpy.calls.first().args).toEqual([{
         name: 'Rock',
-        image: '/assets/images/icon-rock.svg',
+        image: 'assets/images/icon-rock.svg',
         strengths: ['Lizard', 'Scissors'],
         weaknesses: ['Spock', 'Paper'],
         type: chooseMove.type

@@ -1,6 +1,6 @@
 <section>
   <ng-container *ngIf="(view$ | async)?.isShown">
-    <img src="/assets/images/bg-pentagon.svg" alt="Pentagon">
+    <img src="assets/images/bg-pentagon.svg" alt="Pentagon">
 
     <figure [@fadeIn]="props" class="images-container">
       <ng-container *ngFor="let move of moves; trackBy: trackByFn">
