@@ -7,6 +7,9 @@ import { BattlegroundComponent } from './components/battleground/battleground.co
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ModeSelectorComponent } from './components/mode-selector/mode-selector.component';
+import { BonusComponent } from './shared/components/bonus/bonus.component';
+import { OriginalComponent } from './shared/components/original/original.component';
 
 describe('AppComponent', () => {
 
@@ -21,7 +24,10 @@ describe('AppComponent', () => {
         BattlegroundComponent,
         FooterComponent,
         HeaderComponent,
-        ModalComponent
+        ModalComponent,
+        ModeSelectorComponent,
+        BonusComponent,
+        OriginalComponent
       ],
       providers: [provideMockStore({ initialState })]
     }).compileComponents();

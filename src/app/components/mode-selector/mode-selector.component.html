@@ -1,0 +1,15 @@
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <h2>
+    Select a Mode
+  </h2>
+
+  <div class="buttons-container">
+    <button (click)="showOriginalView()">
+      Original
+    </button>
+
+    <button (click)="showBonusView()">
+      Bonus
+    </button>
+  </div>
+</ng-container>

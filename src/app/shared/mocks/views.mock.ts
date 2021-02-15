@@ -1,11 +1,20 @@
 import { Views } from '@interfaces/views.state';
 
 export const viewsMock: Views = {
+  modeSelector: {
+    isShown: true
+  },
+  original: {
+    isShown: false
+  },
+  bonus: {
+    isShown: false
+  },
   arena: {
     isShown: false
   },
   battleground: {
-    isShown: true
+    isShown: false
   },
   modal: {
     isShown: false

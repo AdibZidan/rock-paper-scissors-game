@@ -1,0 +1,13 @@
+<ng-container *ngIf="(view$ | async)?.isShown">
+  <img src="assets/images/bg-pentagon.svg" alt="Pentagon">
+
+  <figure [@fadeIn]="props" class="images-container">
+    <ng-container *ngFor="let bonusMove of bonusMoves; trackBy: trackByFn">
+      <img
+        [class]="bonusMove.name.toLowerCase()"
+        [src]="bonusMove.image"
+        [alt]="bonusMove.name"
+        (click)="[chooseMove(bonusMove), updateView()]">
+    </ng-container>
+  </figure>
+</ng-container>

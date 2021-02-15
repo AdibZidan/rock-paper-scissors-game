@@ -9,7 +9,15 @@ export class MoveHelper {
 
   private constructor() { }
 
-  public static getMoves(): Move[] {
+  public static getOriginalMoves(): Move[] {
+    return [
+      new Scissors(),
+      new Paper(),
+      new Rock()
+    ];
+  }
+
+  public static getBonusMoves(): Move[] {
     return [
       new Scissors(),
       new Spock(),
@@ -20,11 +28,11 @@ export class MoveHelper {
   }
 
   public static getMoveNames(): string[] {
-    return this.getMoves().map((move: Move): string => move.name);
+    return this.getBonusMoves().map((move: Move): string => move.name);
   }
 
   public static getRandomMove(): Move {
-    const moves: Move[] = this.getMoves();
+    const moves: Move[] = this.getBonusMoves();
     const length: number = moves.length;
 
     return moves[this.getRandomIndex(length)];

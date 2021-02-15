@@ -7,48 +7,23 @@ describe('ViewHelper', () => {
   it('Should get the updated arena view', () => {
     const actual: Views = ViewHelper.getUpdatedView(viewsMock, ViewType.ARENA, true);
     const expected: Views = {
-      arena: {
+      modeSelector: {
         isShown: true
       },
-      battleground: {
-        isShown: true
+      original: {
+        isShown: false
       },
-      modal: {
+      bonus: {
         isShown: false
-      }
-    };
-
-    expect(actual).toEqual(expected);
-  });
-
-  it('Should get the updated battleground view', () => {
-    const actual: Views = ViewHelper.getUpdatedView(viewsMock, ViewType.BATTLEGROUND, false);
-    const expected: Views = {
+      },
       arena: {
-        isShown: false
+        isShown: true
       },
       battleground: {
         isShown: false
       },
       modal: {
         isShown: false
-      }
-    };
-
-    expect(actual).toEqual(expected);
-  });
-
-  it('Should get the updated modal view', () => {
-    const actual: Views = ViewHelper.getUpdatedView(viewsMock, ViewType.MODAL, true);
-    const expected: Views = {
-      arena: {
-        isShown: false
-      },
-      battleground: {
-        isShown: true
-      },
-      modal: {
-        isShown: true
       }
     };
 
