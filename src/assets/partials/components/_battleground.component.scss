@@ -1,55 +1,9 @@
 @import "../shared/center/_center.scss";
-@import "../shared/border/_border.scss";
-@import "../shared/colors/_colors.scss";
-@import "../shared/image/_image.scss";
 @import "../media-queries/_battleground.component.media-queries.scss";
 
 @mixin battleground-component {
   section {
     @include center;
-
-    figure {
-      &.images-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-
-        img {
-          cursor: pointer;
-          background-color: #fff;
-          border-radius: 50%;
-          position: relative;
-          transition: 0.5s linear;
-
-          &.scissors {
-            top: 80px;
-          }
-
-          &.spock {
-            left: -50px;
-            bottom: -75px;
-          }
-
-          &.paper {
-            top: -50px;
-            right: -50px;
-          }
-
-          &.rock {
-            bottom: 125px;
-          }
-
-          &:hover {
-            background-color: #ccc;
-          }
-        }
-
-        @include center;
-      }
-    }
-
-    @include image;
   }
 
   @include media-queries;

@@ -1,0 +1,22 @@
+@import "./_mode.component.scss";
+
+@mixin original-component {
+  @include mode-component;
+
+  figure {
+    img {
+      &.scissors {
+        right: 135px;
+      }
+
+      &.paper {
+        bottom: 130px;
+        right: -50px;
+      }
+
+      &.rock {
+        right: 85px;
+      }
+    }
+  }
+}

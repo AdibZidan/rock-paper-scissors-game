@@ -1,0 +1,25 @@
+@import "./_mode.component.scss";
+
+@mixin bonus-component {
+  @include mode-component;
+
+  img {
+    &.scissors {
+      top: 80px;
+    }
+
+    &.spock {
+      left: -50px;
+      bottom: -75px;
+    }
+
+    &.paper {
+      top: -50px;
+      right: -50px;
+    }
+
+    &.rock {
+      bottom: 125px;
+    }
+  }
+}
