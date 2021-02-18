@@ -1,0 +1,23 @@
+@import "../shared/colors/_colors.scss";
+@import "../shared/border/_border.scss";
+@import "../shared/transition/_transition.scss";
+
+@mixin button {
+  button {
+    width: 100px;
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: inherit;
+    color: $main-color;
+    border-radius: 6px;
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($color: $background-color, $amount: 2);
+    }
+
+    @include border(1px, #ccc);
+    @include transition(background-color, 0.6s, ease-out, 100ms);
+  }
+}

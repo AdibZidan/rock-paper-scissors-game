@@ -1,0 +1,24 @@
+@import "./_button.scss";
+@import "../shared/colors/_colors.scss";
+@import "../media-queries/_footer.component.media-queries.scss";
+
+@mixin footer-component {
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 18px;
+    background-color: darken($color: $background-color, $amount: 2);
+
+    div {
+      &.buttons-container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+    }
+
+    @include button;
+  }
+
+  @include media-queries;
+}

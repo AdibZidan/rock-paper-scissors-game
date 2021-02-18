@@ -1,0 +1,58 @@
+@mixin media-queries {
+  @media (min-width: 320px) and (max-width: 480px),
+    (min-width: 481px) and (max-width: 767px),
+    (min-width: 768px) and (max-width: 1024px) {
+    section {
+      width: 385px;
+      height: 125px;
+
+      header {
+        h2 {
+          font-size: 1rem;
+          margin: 10px 0;
+          padding: 0 10px;
+
+          span {
+            order: 2;
+
+            &.pick {
+              margin: 30px 0 0 0;
+            }
+          }
+
+          figure {
+            width: 160px;
+            height: 160px;
+            padding: 16px;
+          }
+        }
+
+        div {
+          &.center {
+            position: absolute;
+            bottom: -175px;
+
+            button {
+              width: 165px;
+              font-size: 1.6rem;
+              padding: 12px;
+            }
+          }
+
+          &.anonymous {
+            width: 160px;
+            height: 160px;
+          }
+        }
+      }
+
+      p {
+        &.message {
+          margin: 0 0 16px 0;
+          font-size: 3rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

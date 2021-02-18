@@ -1,0 +1,1 @@
+@import url(https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,600;0,700;1,600;1,700&display=swap);*{margin:0;padding:0;box-sizing:border-box;font-family:Barlow Semi Condensed,sans-serif}body app-root{display:flex;flex-direction:column;height:100vh}body app-root main{flex:1 0 auto}body app-root app-footer{flex-shrink:0}

@@ -1,0 +1,52 @@
+@import "../border/_border.scss";
+@import "../colors/_colors.scss";
+
+@mixin image {
+  figure {
+    img {
+      width: 125px;
+      height: 125px;
+      object-fit: scale-down;
+    }
+
+    &.scissors,
+    img.scissors {
+      align-self: center;
+
+      @include border(12px, $scissors);
+    }
+
+    &.paper,
+    img.paper {
+      align-self: flex-end;
+
+      @include border(12px, $paper);
+    }
+
+    &.rock,
+    img.rock {
+      align-self: flex-end;
+
+      @include border(12px, $rock);
+    }
+
+    &.lizard,
+    img.lizard {
+      align-self: flex-start;
+
+      @include border(12px, $lizard);
+    }
+
+    &.spock,
+    img.spock {
+      align-self: flex-start;
+
+      @include border(12px, $spock);
+    }
+
+    &.is-winner {
+      box-shadow: 0px 0px 0px 35px #ffffff0a, 0px 0px 0px 65px #ffffff0a, 0px 0px 0px 100px #ffffff0a;
+      transition: box-shadow 0.1s ease;
+    }
+  }
+}

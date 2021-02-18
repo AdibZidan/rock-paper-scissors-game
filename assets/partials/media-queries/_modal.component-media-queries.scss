@@ -1,0 +1,43 @@
+@mixin media-queries {
+  @media (min-width: 320px) and (max-width: 480px) {
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &.rules-container {
+        width: 90%;
+        height: 75%;
+        padding: 20px;
+
+        h3 {
+          justify-content: center;
+
+          span {
+            &.rules {
+              position: absolute;
+              top: 60px;
+              margin: 0;
+              text-transform: uppercase;
+            }
+          }
+
+          img {
+            &.close {
+              position: absolute;
+              bottom: 60px;
+              margin: 0;
+            }
+          }
+        }
+
+        img {
+          &.logo {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
