@@ -1,4 +1,5 @@
 @import "./_mode.component.scss";
+@import "../media-queries/_bonus.component.media-queries.scss";
 
 @mixin bonus-component {
   @include mode-component;
@@ -22,4 +23,6 @@
       bottom: 125px;
     }
   }
+
+  @include media-queries;
 }

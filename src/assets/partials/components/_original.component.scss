@@ -1,4 +1,5 @@
 @import "./_mode.component.scss";
+@import "../media-queries/_original.component.scss";
 
 @mixin original-component {
   @include mode-component;
@@ -6,11 +7,11 @@
   figure {
     img {
       &.scissors {
-        right: 135px;
+        right: 132px;
       }
 
       &.paper {
-        bottom: 130px;
+        bottom: 126px;
         right: -50px;
       }
 
@@ -19,4 +20,6 @@
       }
     }
   }
+
+  @include media-queries;
 }

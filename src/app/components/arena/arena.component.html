@@ -19,15 +19,17 @@
         </h2>
 
         <ng-container *ngIf="message$ | async as message">
-          <div @popUp class="center">
-            <button (click)="updateView()">
-              Play Again
-            </button>
+          <ng-container *ngIf="mode$ | async as mode">
+            <div @popUp class="center">
+              <button (click)="updateView(mode)">
+                Play Again
+              </button>
 
-            <p class="message">
-              {{ message }}
-            </p>
-          </div>
+              <p class="message">
+                {{ message }}
+              </p>
+            </div>
+          </ng-container>
         </ng-container>
 
         <h2>

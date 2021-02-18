@@ -35,6 +35,10 @@ describe('ArenaComponent', () => {
   });
 
   describe('Before initialization', () => {
+    it('Should have an undefined mode$ property', () => {
+      expect(component.mode$).toBeUndefined();
+    });
+
     it('Should have an undefined view$ property', () => {
       expect(component.view$).toBeUndefined();
     });
@@ -58,7 +62,11 @@ describe('ArenaComponent', () => {
       mockStore.resetSelectors();
     });
 
-    it('Should select the view from the store', () => {
+    it('Should have a defined mode$ property', () => {
+      expect(component.mode$).toBeDefined();
+    });
+
+    it('Should have a defined view$ property', () => {
       expect(component.view$).toBeDefined();
     });
 
@@ -92,10 +100,10 @@ describe('ArenaComponent', () => {
       expect(component.message$).toBeDefined();
     }));
 
-    it('Should hide the arena and show the battleground', () => {
+    it('Should hide the arena and show another view', () => {
       const dispatchSpy = spyOn(mockStore, 'dispatch');
 
-      component.updateView();
+      component.updateView('original');
 
       expect(dispatchSpy.calls.first().args).toEqual([{
         viewType: ViewType.ARENA,
@@ -103,7 +111,7 @@ describe('ArenaComponent', () => {
       }] as any);
 
       expect(dispatchSpy.calls.mostRecent().args).toEqual([{
-        viewType: ViewType.BATTLEGROUND,
+        viewType: ViewType.ORIGINAL,
         type: showView.type
       }] as any);
 

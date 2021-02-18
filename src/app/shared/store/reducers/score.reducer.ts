@@ -1,14 +1,17 @@
-import { decrementScore, incrementScore } from '@actions/score.actions';
+import { decrementScore, incrementScore, resetScore } from '@actions/score.actions';
 import { getExistingPropertyFromLocalStorage } from '@helpers/store.helper';
-import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
 const initialScoreState: number = 0;
 
-const _scoreReducer: ActionReducer<number, Action> = createReducer(
+const _scoreReducer = createReducer(
   initialScoreState,
   on(
+    resetScore, (): number => initialScoreState
+  ),
+  on(
     incrementScore,
-    (state: number): number => {
+    (): number => {
       const score: string = getExistingPropertyFromLocalStorage('score');
 
       return parseInt(score) + 1;
@@ -16,7 +19,7 @@ const _scoreReducer: ActionReducer<number, Action> = createReducer(
   ),
   on(
     decrementScore,
-    (state: number): number => {
+    (): number => {
       const score: string = getExistingPropertyFromLocalStorage('score');
 
       return parseInt(score) - 1;
@@ -27,6 +30,6 @@ const _scoreReducer: ActionReducer<number, Action> = createReducer(
 export function scoreReducer(
   state: undefined | number,
   action: Action
-): number {
+) {
   return _scoreReducer(state, action);
 }

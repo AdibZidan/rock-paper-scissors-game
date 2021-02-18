@@ -1,10 +1,7 @@
 @import "../shared/center/_center.scss";
-@import "../media-queries/_battleground.component.media-queries.scss";
 
 @mixin battleground-component {
   section {
     @include center;
   }
-
-  @include media-queries;
 }

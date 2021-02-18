@@ -33,6 +33,10 @@ describe('ModalComponent', () => {
       expect(component.view$).toBeUndefined();
     });
 
+    it('Should have an undefined mode$ property', () => {
+      expect(component.mode$).toBeUndefined();
+    });
+
     it('Should have a defined props property', () => {
       expect(component.props).toEqual({
         value: 'fades slowly in',
@@ -46,8 +50,12 @@ describe('ModalComponent', () => {
       component.ngOnInit();
     });
 
-    it('Should select view$ property from the store', () => {
+    it('Should have a defined views$ property', () => {
       expect(component.view$).toBeDefined();
+    });
+
+    it('Should have a defined mode$ property', () => {
+      expect(component.mode$).toBeDefined();
     });
 
     it('Should hide the modal', () => {

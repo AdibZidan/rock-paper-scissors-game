@@ -9,6 +9,14 @@
     padding: 18px;
     background-color: darken($color: $background-color, $amount: 2);
 
+    div {
+      &.buttons-container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+    }
+
     @include button;
   }
 

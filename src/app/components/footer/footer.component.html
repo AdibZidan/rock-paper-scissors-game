@@ -1,7 +1,15 @@
-<footer>
-  <app-modal></app-modal>
+<ng-container *ngIf="mode$ | async">
+  <footer>
+    <app-modal></app-modal>
 
-  <button (click)="showModal()">
-    Rules
-  </button>
-</footer>
+    <div class="buttons-container">
+      <button (click)="resetViewsAndScore()">
+        Reset
+      </button>
+
+      <button (click)="showModal()">
+        Rules
+      </button>
+    </div>
+  </footer>
+</ng-container>

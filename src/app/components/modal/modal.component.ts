@@ -19,6 +19,7 @@ import { Observable } from 'rxjs';
 export class ModalComponent implements OnInit {
 
   public view$!: Observable<View>;
+  public mode$!: Observable<string>;
   public props: Props = props('fades slowly in', { timing: '0.5s' });
 
   constructor(
@@ -27,6 +28,7 @@ export class ModalComponent implements OnInit {
 
   public ngOnInit(): void {
     this.view$ = this.store$.select(selectView(ViewType.MODAL));
+    this.mode$ = this.store$.select('mode');
   }
 
   public hideModal(): void {

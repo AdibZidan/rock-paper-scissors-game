@@ -17,9 +17,18 @@
         (click)="hideModal()">
     </h3>
 
-    <img
-      class="logo"
-      src="assets/images/image-rules-bonus.svg"
-      alt="Game Rules">
+    <ng-container *ngIf="(mode$ | async) === 'original'">
+      <img
+        class="logo"
+        src="assets/images/image-rules.svg"
+        alt="Game Rules">
+    </ng-container>
+
+    <ng-container *ngIf="(mode$ | async) === 'bonus'">
+      <img
+        class="logo"
+        src="assets/images/image-rules-bonus.svg"
+        alt="Game Rules">
+    </ng-container>
   </div>
 </ng-container>

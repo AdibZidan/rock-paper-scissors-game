@@ -27,10 +27,25 @@ describe('HeaderComponent', () => {
   });
 
   describe('Before initialization', () => {
-    it('Should have a defined moveNames property', () => {
-      expect(component.moveNames).toBeDefined();
-      expect(component.moveNames).toEqual([
+    it('Should have an undefined mode$ property', () => {
+      expect(component.mode$).toBeUndefined();
+    });
+
+    it('Should have an undefined views$ property', () => {
+      expect(component.views$).toBeUndefined();
+    });
+
+    it('Should have a defined bonusMoveNames property', () => {
+      expect(component.bonusMoveNames).toBeDefined();
+      expect(component.bonusMoveNames).toEqual([
         'Scissors', 'Spock', 'Paper', 'Lizard', 'Rock'
+      ]);
+    });
+
+    it('Should have a defined originalMoveNames property', () => {
+      expect(component.originalMoveNames).toBeDefined();
+      expect(component.originalMoveNames).toEqual([
+        'Scissors', 'Paper', 'Rock'
       ]);
     });
 
@@ -50,19 +65,32 @@ describe('HeaderComponent', () => {
     let selectSpy: jasmine.Spy;
 
     beforeEach(() => {
-      selectSpy = spyOn(mockStore, 'select').and.callThrough();
+      selectSpy = spyOn(
+        mockStore,
+        'select'
+      ).and.callThrough();
 
       component.ngOnInit();
+    });
+
+    it('Should have an undefined mode$ property', () => {
+      expect(component.mode$).toBeDefined();
+    });
+
+    it('Should have an undefined views$ property', () => {
+      expect(component.views$).toBeDefined();
     });
 
     it('Should have a defined score$ property', () => {
       expect(component.score$).toBeDefined();
     });
 
-    it('Should select the score property from the store', () => {
-      expect(selectSpy).toHaveBeenCalled();
-      expect(selectSpy).toHaveBeenCalledWith('score');
-      expect(selectSpy).toHaveBeenCalledTimes(1);
+    it('Should select the mode, score and views properties from the store', () => {
+      expect(selectSpy.calls.first().args).toEqual(['mode']);
+      expect(selectSpy.calls.all()[1].args).toEqual(['views']);
+      expect(selectSpy.calls.mostRecent().args).toEqual(['score']);
+
+      expect(selectSpy.calls.count()).toEqual(3);
     });
   });
 

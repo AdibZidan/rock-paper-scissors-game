@@ -3,7 +3,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const chooseMove = createAction(
   'Choose a Move',
-  props<Move>()
+  props<{ move: Move, mode: string; }>()
 );
 
 export const chooseWinner = createAction(

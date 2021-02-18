@@ -1,21 +1,33 @@
-<div class="top"></div>
+<ng-container *ngIf="(views$ | async)?.header?.isShown">
+  <div class="top"></div>
 
-<header [@fadeIn]="props">
-  <nav>
-    <ng-container *ngFor="let moveName of moveNames">
-      <li>
-        {{ moveName }}
-      </li>
-    </ng-container>
-  </nav>
+  <header [@fadeIn]="props">
+    <nav>
+      <ng-container *ngIf="(mode$ | async) === 'original'">
+        <ng-container *ngFor="let originalMoveName of originalMoveNames">
+          <li>
+            {{ originalMoveName }}
+          </li>
+        </ng-container>
+      </ng-container>
 
-  <div class="score-container">
-    <span>
-      Score
-    </span>
+      <ng-container *ngIf="(mode$ | async) === 'bonus'">
+        <ng-container *ngFor="let bonusMoveName of bonusMoveNames">
+          <li>
+            {{ bonusMoveName }}
+          </li>
+        </ng-container>
+      </ng-container>
+    </nav>
 
-    <span>
-      {{ score$ | async }}
-    </span>
-  </div>
-</header>
+    <div class="score-container">
+      <span>
+        Score
+      </span>
+
+      <span>
+        {{ score$ | async }}
+      </span>
+    </div>
+  </header>
+</ng-container>

@@ -27,11 +27,22 @@ export class MoveHelper {
     ];
   }
 
-  public static getMoveNames(): string[] {
+  public static getOriginalMoveNames(): string[] {
+    return this.getOriginalMoves().map((move: Move): string => move.name);
+  }
+
+  public static getBonusMoveNames(): string[] {
     return this.getBonusMoves().map((move: Move): string => move.name);
   }
 
-  public static getRandomMove(): Move {
+  public static getRandomOriginalMove(): Move {
+    const moves: Move[] = this.getOriginalMoves();
+    const length: number = moves.length;
+
+    return moves[this.getRandomIndex(length)];
+  }
+
+  public static getRandomBonusMove(): Move {
     const moves: Move[] = this.getBonusMoves();
     const length: number = moves.length;
 

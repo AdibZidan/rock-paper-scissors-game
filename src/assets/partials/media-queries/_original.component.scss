@@ -1,0 +1,37 @@
+@mixin media-queries {
+  @media (min-width: 320px) and (max-width: 480px),
+    (min-width: 481px) and (max-width: 767px),
+    (min-width: 768px) and (max-width: 1024px) {
+    img {
+      width: 250px;
+    }
+
+    figure {
+      &.images-container {
+        img {
+          transition: none;
+          width: 95px;
+          height: 95px;
+
+          &.scissors {
+            right: 108px;
+            top: -6px;
+          }
+
+          &.paper {
+            bottom: 105px;
+            right: -35px;
+          }
+
+          &.rock {
+            right: 75px;
+          }
+
+          &:hover {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

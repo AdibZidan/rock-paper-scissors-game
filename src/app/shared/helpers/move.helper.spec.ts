@@ -26,20 +26,37 @@ describe('MoveHelper', () => {
     ]);
   });
 
+  it('Should get the original move names', () => {
+    expect(MoveHelper.getOriginalMoveNames()).toBeDefined();
+    expect(MoveHelper.getOriginalMoveNames()).toEqual([
+      'Scissors', 'Paper', 'Rock'
+    ]);
+  });
+
   it('Should get the bonus move names', () => {
-    expect(MoveHelper.getMoveNames()).toBeDefined();
-    expect(MoveHelper.getMoveNames()).toEqual([
+    expect(MoveHelper.getBonusMoveNames()).toBeDefined();
+    expect(MoveHelper.getBonusMoveNames()).toEqual([
       'Scissors', 'Spock', 'Paper', 'Lizard', 'Rock'
     ]);
   });
 
-  it('Should get a random move', () => {
+  it('Should get a random original move', () => {
     const getRandomMoveSpy: jasmine.Spy = spyOn(
       MoveHelper,
-      'getRandomMove'
+      'getRandomOriginalMove'
     ).and.returnValue(new Rock());
 
-    expect(MoveHelper.getRandomMove()).toBeDefined();
-    expect(MoveHelper.getRandomMove()).toEqual(getRandomMoveSpy());
+    expect(MoveHelper.getRandomOriginalMove()).toBeDefined();
+    expect(MoveHelper.getRandomOriginalMove()).toEqual(getRandomMoveSpy());
+  });
+
+  it('Should get a random bonus move', () => {
+    const getRandomMoveSpy: jasmine.Spy = spyOn(
+      MoveHelper,
+      'getRandomBonusMove'
+    ).and.returnValue(new Scissors());
+
+    expect(MoveHelper.getRandomBonusMove()).toBeDefined();
+    expect(MoveHelper.getRandomBonusMove()).toEqual(getRandomMoveSpy());
   });
 });

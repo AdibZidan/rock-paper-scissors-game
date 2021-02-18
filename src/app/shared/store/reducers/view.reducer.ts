@@ -1,4 +1,4 @@
-import { hideView, showView } from '@actions/view.actions';
+import { hideView, resetViews, showView } from '@actions/view.actions';
 import { ViewHelper } from '@helpers/view.helper';
 import { Views } from '@interfaces/views.state';
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
@@ -6,6 +6,9 @@ import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 const initialViewsState: Views = {
   modeSelector: {
     isShown: true
+  },
+  header: {
+    isShown: false
   },
   original: {
     isShown: false
@@ -21,11 +24,17 @@ const initialViewsState: Views = {
   },
   modal: {
     isShown: false
+  },
+  footer: {
+    isShown: false
   }
 };
 
 const _viewReducer: ActionReducer<Views, Action> = createReducer(
   initialViewsState,
+  on(
+    resetViews, (): Views => initialViewsState
+  ),
   on(
     showView, (state, { viewType }): Views => ViewHelper.getUpdatedView(state, viewType, true)
   ),

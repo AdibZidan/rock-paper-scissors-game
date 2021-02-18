@@ -20,6 +20,7 @@ import { delay } from 'rxjs/operators';
 })
 export class ArenaComponent implements OnInit {
 
+  public mode$!: Observable<string>;
   public view$!: Observable<View>;
   public move$!: Observable<Move>;
   public randomHouseMove$!: Observable<Move>;
@@ -30,15 +31,16 @@ export class ArenaComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.mode$ = this.store$.select('mode');
     this.view$ = this.store$.select(selectView(ViewType.ARENA));
     this.move$ = this.store$.select(selectMove);
     this.randomHouseMove$ = this.store$.select(selectRandomHouseMove).pipe(delay(DELAY_TIME));
     this.message$ = this.store$.select('message').pipe(delay(DELAY_TIME));
   }
 
-  public updateView(): void {
+  public updateView(viewType: any): void {
     this.store$.dispatch(hideView({ viewType: ViewType.ARENA }));
-    this.store$.dispatch(showView({ viewType: ViewType.BATTLEGROUND }));
+    this.store$.dispatch(showView({ viewType }));
   }
 
 }

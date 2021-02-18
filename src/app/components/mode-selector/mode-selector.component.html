@@ -1,7 +1,7 @@
 <ng-container *ngIf="(view$ | async)?.isShown">
   <div class="overlay"></div>
 
-  <section>
+  <section [@fadeIn]="props">
     <h2>
       Select a Mode
     </h2>
