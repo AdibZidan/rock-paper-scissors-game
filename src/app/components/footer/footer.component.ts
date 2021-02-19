@@ -1,3 +1,4 @@
+import { resetMode } from '@actions/mode.actions';
 import { resetScore } from '@actions/score.actions';
 import { resetViews, showView } from '@actions/view.actions';
 import { Component, OnInit } from '@angular/core';
@@ -30,6 +31,7 @@ export class FooterComponent implements OnInit {
   public resetViewsAndScore(): void {
     this.store$.dispatch(resetViews());
     this.store$.dispatch(resetScore());
+    this.store$.dispatch(resetMode());
   }
 
 }

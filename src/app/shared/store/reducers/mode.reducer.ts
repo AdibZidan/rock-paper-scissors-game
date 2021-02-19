@@ -1,10 +1,14 @@
-import { chooseMode, setMode } from '@actions/mode.actions';
+import { chooseMode, resetMode, setMode } from '@actions/mode.actions';
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 
 const initialModeState: string = '';
 
 const _modeReducer: ActionReducer<string, Action> = createReducer(
   initialModeState,
+  on(
+    resetMode,
+    (state: string): string => initialModeState
+  ),
   on(
     chooseMode,
     (state: string): string => state

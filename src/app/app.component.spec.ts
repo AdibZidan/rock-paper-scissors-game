@@ -10,11 +10,13 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ModeSelectorComponent } from './components/mode-selector/mode-selector.component';
 import { BonusComponent } from './shared/components/bonus/bonus.component';
 import { OriginalComponent } from './shared/components/original/original.component';
+import { TitleService } from './shared/services/title/title.service';
 
 describe('AppComponent', () => {
 
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let titleService: TitleService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -36,10 +38,29 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
+    titleService = TestBed.inject(TitleService);
   });
 
   it('Should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('After initialization', () => {
+    let titleSetSpy: jasmine.Spy;
+
+    beforeEach(() => {
+      titleSetSpy = spyOn(
+        titleService,
+        'setTitle$'
+      ).and.callThrough();
+
+      component.ngOnInit();
+    });
+
+    it('Should set the title', () => {
+      expect(titleSetSpy).toHaveBeenCalled();
+      expect(titleSetSpy).toHaveBeenCalledTimes(1);
+    });
   });
 
 });

@@ -1,3 +1,4 @@
+import { resetMode } from '@actions/mode.actions';
 import { resetScore } from '@actions/score.actions';
 import { resetViews, showView } from '@actions/view.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -69,10 +70,13 @@ describe('FooterComponent', () => {
       expect(dispatchSpy.calls.first().args).toEqual([{
         type: resetViews.type
       }]);
-      expect(dispatchSpy.calls.mostRecent().args).toEqual([{
+      expect(dispatchSpy.calls.all()[1].args).toEqual([{
         type: resetScore.type
       }]);
-      expect(dispatchSpy.calls.count()).toEqual(2);
+      expect(dispatchSpy.calls.mostRecent().args).toEqual([{
+        type: resetMode.type
+      }]);
+      expect(dispatchSpy.calls.count()).toEqual(3);
     });
   });
 
