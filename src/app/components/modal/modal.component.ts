@@ -1,8 +1,8 @@
 import { hideView } from '@actions/view.actions';
 import { Component, OnInit } from '@angular/core';
 import { fadeIn, fadeOut } from '@animations';
-import { ViewType } from '@enums/view-type.enum';
-import { props } from '@helpers/animations.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { props } from '@helpers/animations/animations.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Props } from '@interfaces/props.interface';
 import { View } from '@interfaces/view.interface';

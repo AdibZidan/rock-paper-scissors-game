@@ -1,7 +1,7 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
-import { Mode } from '@enums/mode.enum';
-import { BONUS, DEFAULT, ORIGINAL } from '@helpers/title.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { BONUS, DEFAULT, ORIGINAL } from '@helpers/title/title.helper';
 import { initialState } from '@mocks/initial-state.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { TitleService } from './title.service';
@@ -31,7 +31,7 @@ describe('TitleService', () => {
   });
 
   it('Should initially have a default title', (doneFn: DoneFn) => {
-    service.setTitle$().subscribe(() => {
+    service.getUpdatedTitle$().subscribe(() => {
       const expectedTitle: string = DEFAULT;
 
       expect(titleSpy).toHaveBeenCalledWith(expectedTitle);
@@ -41,9 +41,9 @@ describe('TitleService', () => {
   });
 
   it('Should change the title to original title', (doneFn: DoneFn) => {
-    mockStore.overrideSelector('mode', Mode.ORIGINAL);
+    mockStore.overrideSelector('mode', ViewType.ORIGINAL);
 
-    service.setTitle$().subscribe(() => {
+    service.getUpdatedTitle$().subscribe(() => {
       const expectedTitle: string = ORIGINAL;
 
       expect(titleSpy).toHaveBeenCalledWith(expectedTitle);
@@ -53,9 +53,9 @@ describe('TitleService', () => {
   });
 
   it('Should change the title to bonus title', (doneFn: DoneFn) => {
-    mockStore.overrideSelector('mode', Mode.BONUS);
+    mockStore.overrideSelector('mode', ViewType.BONUS);
 
-    service.setTitle$().subscribe(() => {
+    service.getUpdatedTitle$().subscribe(() => {
       const expectedTitle: string = BONUS;
 
       expect(titleSpy).toHaveBeenCalledWith(expectedTitle);

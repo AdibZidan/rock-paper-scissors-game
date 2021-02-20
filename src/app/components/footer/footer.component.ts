@@ -2,7 +2,7 @@ import { resetMode } from '@actions/mode.actions';
 import { resetScore } from '@actions/score.actions';
 import { resetViews, showView } from '@actions/view.actions';
 import { Component, OnInit } from '@angular/core';
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { AppState } from '@interfaces/app-state.interface';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -28,7 +28,7 @@ export class FooterComponent implements OnInit {
     this.store$.dispatch(showView({ viewType: ViewType.MODAL }));
   }
 
-  public resetViewsAndScore(): void {
+  public reset(): void {
     this.store$.dispatch(resetViews());
     this.store$.dispatch(resetScore());
     this.store$.dispatch(resetMode());

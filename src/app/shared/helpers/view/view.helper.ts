@@ -1,4 +1,4 @@
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { View } from '@interfaces/view.interface';
 import { Views } from '@interfaces/views.state';
 

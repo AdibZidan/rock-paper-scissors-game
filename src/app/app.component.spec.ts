@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
+import { DEFAULT } from '@helpers/title/title.helper';
 import { initialState } from '@mocks/initial-state.mock';
 import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
@@ -17,6 +19,7 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let titleService: TitleService;
+  let title: Title;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -39,6 +42,7 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     titleService = TestBed.inject(TitleService);
+    title = TestBed.inject(Title);
   });
 
   it('Should create', () => {
@@ -46,20 +50,21 @@ describe('AppComponent', () => {
   });
 
   describe('After initialization', () => {
-    let titleSetSpy: jasmine.Spy;
+    let getUpdatedTitleSpy: jasmine.Spy;
 
     beforeEach(() => {
-      titleSetSpy = spyOn(
+      getUpdatedTitleSpy = spyOn(
         titleService,
-        'setTitle$'
+        'getUpdatedTitle$'
       ).and.callThrough();
 
       component.ngOnInit();
     });
 
-    it('Should set the title', () => {
-      expect(titleSetSpy).toHaveBeenCalled();
-      expect(titleSetSpy).toHaveBeenCalledTimes(1);
+    it('Should call title update', () => {
+      expect(getUpdatedTitleSpy).toHaveBeenCalled();
+      expect(getUpdatedTitleSpy).toHaveBeenCalledTimes(1);
+      expect(title.getTitle()).toEqual(DEFAULT);
     });
   });
 

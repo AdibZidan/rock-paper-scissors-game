@@ -1,6 +1,6 @@
-@import "../shared/center/_center.scss";
-@import "../components/_button.scss";
-@import "../shared/overlay/_overlay.scss";
+@import "../../shared/center/_center.scss";
+@import "../../shared/button/_button.scss";
+@import "../../shared/overlay/_overlay.scss";
 
 @mixin mode-selector-component {
   div {

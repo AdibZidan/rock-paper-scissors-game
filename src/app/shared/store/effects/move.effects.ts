@@ -2,7 +2,7 @@ import { showMessage } from '@actions/message.actions';
 import { chooseMove, chooseWinner } from '@actions/move.actions';
 import { decrementScore, incrementScore } from '@actions/score.actions';
 import { Injectable } from '@angular/core';
-import { DELAY_TIME } from '@helpers/store.helper';
+import { DELAY_TIME } from '@helpers/store/store.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Move } from '@interfaces/move.interface';
 import { Actions, createEffect, ofType } from '@ngrx/effects';

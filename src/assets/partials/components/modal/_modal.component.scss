@@ -1,6 +1,6 @@
-@import "../shared/overlay/_overlay.scss";
-@import "../shared/center/_center.scss";
-@import "../media-queries/_modal.component-media-queries.scss";
+@import "../../shared/overlay/_overlay.scss";
+@import "../../shared/center/_center.scss";
+@import "../../media-queries/modal/_modal.component-media-queries.scss";
 
 @mixin modal-component {
   div {

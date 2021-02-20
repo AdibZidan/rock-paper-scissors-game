@@ -1,6 +1,6 @@
 import { hideView } from '@actions/view.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { initialState } from '@mocks/initial-state.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ModalComponent } from './modal.component';
@@ -50,7 +50,7 @@ describe('ModalComponent', () => {
       component.ngOnInit();
     });
 
-    it('Should have a defined views$ property', () => {
+    it('Should have a defined view$ property', () => {
       expect(component.view$).toBeDefined();
     });
 

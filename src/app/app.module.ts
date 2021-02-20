@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { META_REDUCERS, REDUCERS } from '@helpers/app.module.helper';
+import { META_REDUCERS, REDUCERS } from '@helpers/app/app.module.helper';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';

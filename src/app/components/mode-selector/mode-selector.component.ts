@@ -2,9 +2,8 @@ import { setMode } from '@actions/mode.actions';
 import { hideView, showView } from '@actions/view.actions';
 import { Component, OnInit } from '@angular/core';
 import { fadeIn } from '@animations';
-import { Mode } from '@enums/mode.enum';
-import { ViewType } from '@enums/view-type.enum';
-import { props } from '@helpers/animations.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { props } from '@helpers/animations/animations.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Props } from '@interfaces/props.interface';
 import { View } from '@interfaces/view.interface';
@@ -33,14 +32,14 @@ export class ModeSelectorComponent implements OnInit {
 
   public showOriginalView(): void {
     this.store$.dispatch(showView({ viewType: ViewType.ORIGINAL }));
-    this.store$.dispatch(setMode({ mode: Mode.ORIGINAL }));
+    this.store$.dispatch(setMode({ mode: ViewType.ORIGINAL }));
     this.hideModeSelectorView();
     this.showHeaderAndFooterViews();
   }
 
   public showBonusView(): void {
     this.store$.dispatch(showView({ viewType: ViewType.BONUS }));
-    this.store$.dispatch(setMode({ mode: Mode.BONUS }));
+    this.store$.dispatch(setMode({ mode: ViewType.BONUS }));
     this.hideModeSelectorView();
     this.showHeaderAndFooterViews();
   }

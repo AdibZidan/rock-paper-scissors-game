@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeIn } from '@animations';
-import { props } from '@helpers/animations.helper';
-import { MoveHelper } from '@helpers/move.helper';
-import { DELAY_TIME, getExistingPropertyFromLocalStorage } from '@helpers/store.helper';
+import { props } from '@helpers/animations/animations.helper';
+import { MoveHelper } from '@helpers/move/move.helper';
+import { DELAY_TIME, getExistingPropertyFromLocalStorage } from '@helpers/store/store.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Props } from '@interfaces/props.interface';
-import { Views } from '@interfaces/views.state';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { delay, startWith } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { delay, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +17,7 @@ import { delay, startWith } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  public mode$!: Observable<string>;
-  public views$!: Observable<Views>;
+  public state$!: Observable<{ mode: string, isHeaderShown: boolean; }>;
   public bonusMoveNames: string[] = MoveHelper.getBonusMoveNames();
   public originalMoveNames: string[] = MoveHelper.getOriginalMoveNames();
   public score$!: Observable<string | number>;
@@ -30,9 +28,15 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.mode$ = this.store$.select('mode');
-    this.views$ = this.store$.select('views');
+    this.state$ = this.getState$();
     this.score$ = this.getDelayedScoreFromLocalStorage();
+  }
+
+  private getState$(): Observable<{ mode: string, isHeaderShown: boolean; }> {
+    return combineLatest([
+      this.store$.select('mode'),
+      this.store$.select('views')
+    ]).pipe(map(([mode, views]) => ({ mode, isHeaderShown: views.header.isShown })));
   }
 
   private getDelayedScoreFromLocalStorage(): Observable<string | number> {

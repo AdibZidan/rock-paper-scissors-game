@@ -1,8 +1,8 @@
 import { hideView, showView } from '@actions/view.actions';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ViewType } from '@enums/view-type.enum';
-import { DELAY_TIME } from '@helpers/store.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { DELAY_TIME } from '@helpers/store/store.helper';
 import { Move } from '@interfaces/move.interface';
 import { initialState } from '@mocks/initial-state.mock';
 import { moveMock } from '@mocks/move.mock';
@@ -35,16 +35,8 @@ describe('ArenaComponent', () => {
   });
 
   describe('Before initialization', () => {
-    it('Should have an undefined mode$ property', () => {
-      expect(component.mode$).toBeUndefined();
-    });
-
-    it('Should have an undefined view$ property', () => {
-      expect(component.view$).toBeUndefined();
-    });
-
-    it('Should have an undefined move$ property', () => {
-      expect(component.move$).toBeUndefined();
+    it('Should have an undefined state$ property', () => {
+      expect(component.state$).toBeUndefined();
     });
 
     it('Should have an undefined randomHouseMove$ property', () => {
@@ -58,25 +50,33 @@ describe('ArenaComponent', () => {
 
   describe('After initialization', () => {
     beforeEach(() => {
-      component.ngOnInit();
       mockStore.resetSelectors();
+      component.ngOnInit();
+
+      expect(component.state$).toBeDefined();
     });
 
-    it('Should have a defined mode$ property', () => {
-      expect(component.mode$).toBeDefined();
+    it('Should select the mode from the store', (doneFn: DoneFn) => {
+      component.state$.subscribe((state): void => {
+        expect(state.mode).toEqual('');
+
+        doneFn();
+      });
     });
 
-    it('Should have a defined view$ property', () => {
-      expect(component.view$).toBeDefined();
+    it('Should select the view from the store', (doneFn: DoneFn) => {
+      component.state$.subscribe((state): void => {
+        expect(state.view).toEqual({ isShown: false });
+
+        doneFn();
+      });
     });
 
     it('Should select the move from the store', (doneFn: DoneFn) => {
       mockStore.overrideSelector(selectMove, moveMock);
 
-      expect(component.move$).toBeDefined();
-
-      component.move$.subscribe((actualMove: Move): void => {
-        expect(actualMove).toEqual(moveMock);
+      component.state$.subscribe((state): void => {
+        expect(state.move).toEqual(moveMock);
 
         doneFn();
       });

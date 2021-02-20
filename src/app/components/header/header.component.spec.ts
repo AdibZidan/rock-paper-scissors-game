@@ -27,12 +27,8 @@ describe('HeaderComponent', () => {
   });
 
   describe('Before initialization', () => {
-    it('Should have an undefined mode$ property', () => {
-      expect(component.mode$).toBeUndefined();
-    });
-
-    it('Should have an undefined views$ property', () => {
-      expect(component.views$).toBeUndefined();
+    it('Should have an undefined state$ property', () => {
+      expect(component.state$).toBeUndefined();
     });
 
     it('Should have a defined bonusMoveNames property', () => {
@@ -73,19 +69,9 @@ describe('HeaderComponent', () => {
       component.ngOnInit();
     });
 
-    it('Should have an undefined mode$ property', () => {
-      expect(component.mode$).toBeDefined();
-    });
-
-    it('Should have an undefined views$ property', () => {
-      expect(component.views$).toBeDefined();
-    });
-
-    it('Should have a defined score$ property', () => {
-      expect(component.score$).toBeDefined();
-    });
-
     it('Should select the mode, score and views properties from the store', () => {
+      expect(component.state$).toBeDefined();
+      expect(component.score$).toBeDefined();
       expect(selectSpy.calls.first().args).toEqual(['mode']);
       expect(selectSpy.calls.all()[1].args).toEqual(['views']);
       expect(selectSpy.calls.mostRecent().args).toEqual(['score']);

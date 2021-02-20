@@ -1,4 +1,4 @@
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { createAction, props } from '@ngrx/store';
 
 export const resetViews = createAction('Reset all the Views');

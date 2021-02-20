@@ -1,4 +1,4 @@
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { Views } from '@interfaces/views.state';
 import { viewsMock } from '@mocks/views.mock';
 import { ViewHelper } from './view.helper';

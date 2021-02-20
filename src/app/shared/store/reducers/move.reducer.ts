@@ -1,6 +1,6 @@
 import { chooseMove, chooseWinner } from '@actions/move.actions';
-import { Mode } from '@enums/mode.enum';
-import { MoveHelper } from '@helpers/move.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { MoveHelper } from '@helpers/move/move.helper';
 import { Moves } from '@interfaces/moves.interface';
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 
@@ -24,7 +24,7 @@ const _moveReducer: ActionReducer<Moves, Action> = createReducer(
   on(
     chooseMove,
     (state, { move, mode }) => {
-      if (mode === Mode.ORIGINAL) {
+      if (mode === ViewType.ORIGINAL) {
         return {
           move,
           randomHouseMove: MoveHelper.getRandomOriginalMove()

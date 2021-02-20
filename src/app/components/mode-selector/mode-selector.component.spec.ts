@@ -1,8 +1,7 @@
 import { setMode } from '@actions/mode.actions';
 import { hideView, showView } from '@actions/view.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Mode } from '@enums/mode.enum';
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { initialState } from '@mocks/initial-state.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ModeSelectorComponent } from './mode-selector.component';
@@ -64,7 +63,7 @@ describe('ModeSelectorComponent', () => {
         type: showView.type
       }]);
       expect(dispatchSpy.calls.all()[1].args).toEqual([{
-        mode: Mode.ORIGINAL,
+        mode: ViewType.ORIGINAL,
         type: setMode.type
       }]);
       expect(dispatchSpy.calls.all()[2].args).toEqual([{
@@ -90,7 +89,7 @@ describe('ModeSelectorComponent', () => {
         type: showView.type
       }]);
       expect(dispatchSpy.calls.all()[1].args).toEqual([{
-        mode: Mode.BONUS,
+        mode: ViewType.BONUS,
         type: setMode.type
       }]);
       expect(dispatchSpy.calls.all()[2].args).toEqual([{

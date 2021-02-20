@@ -2,7 +2,7 @@ import { resetMode } from '@actions/mode.actions';
 import { resetScore } from '@actions/score.actions';
 import { resetViews, showView } from '@actions/view.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { initialState } from '@mocks/initial-state.mock';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ModalComponent } from '../modal/modal.component';
@@ -64,8 +64,8 @@ describe('FooterComponent', () => {
       expect(dispatchSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('Should reset the views and score state', () => {
-      component.resetViewsAndScore();
+    it('Should reset the views, score and mode states', () => {
+      component.reset();
 
       expect(dispatchSpy.calls.first().args).toEqual([{
         type: resetViews.type

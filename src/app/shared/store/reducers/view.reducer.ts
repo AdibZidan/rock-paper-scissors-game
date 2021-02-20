@@ -1,5 +1,5 @@
 import { hideView, resetViews, showView } from '@actions/view.actions';
-import { ViewHelper } from '@helpers/view.helper';
+import { ViewHelper } from '@helpers/view/view.helper';
 import { Views } from '@interfaces/views.state';
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 

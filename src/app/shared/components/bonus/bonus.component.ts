@@ -2,10 +2,9 @@ import { chooseMove } from '@actions/move.actions';
 import { hideView, showView } from '@actions/view.actions';
 import { Component, OnInit } from '@angular/core';
 import { fadeIn } from '@animations';
-import { Mode as ModeType } from '@enums/mode.enum';
-import { ViewType } from '@enums/view-type.enum';
-import { props } from '@helpers/animations.helper';
-import { MoveHelper } from '@helpers/move.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { props } from '@helpers/animations/animations.helper';
+import { MoveHelper } from '@helpers/move/move.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Mode } from '@interfaces/mode.interface';
 import { Move } from '@interfaces/move.interface';
@@ -36,7 +35,7 @@ export class BonusComponent implements OnInit, Mode {
   }
 
   public chooseMove(move: Move): void {
-    this.store$.dispatch(chooseMove({ move, mode: ModeType.BONUS }));
+    this.store$.dispatch(chooseMove({ move, mode: ViewType.BONUS }));
   }
 
   public updateView(): void {

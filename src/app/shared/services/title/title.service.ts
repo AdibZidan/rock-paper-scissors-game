@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Mode } from '@enums/mode.enum';
-import { BONUS, DEFAULT, ORIGINAL } from '@helpers/title.helper';
+import { ViewType } from '@enums/view-type/view-type.enum';
+import { BONUS, DEFAULT, ORIGINAL } from '@helpers/title/title.helper';
 import { AppState } from '@interfaces/app-state.interface';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -17,7 +17,7 @@ export class TitleService {
     private title: Title
   ) { }
 
-  public setTitle$(): Observable<string> {
+  public getUpdatedTitle$(): Observable<string> {
     return this.store$.select('mode')
       .pipe(tap((mode: string): void =>
         this.updateTitle(mode))
@@ -26,11 +26,11 @@ export class TitleService {
 
   private updateTitle(mode: string): void {
     switch (mode) {
-      case Mode.ORIGINAL:
+      case ViewType.ORIGINAL:
         this.title.setTitle(ORIGINAL);
         break;
 
-      case Mode.BONUS:
+      case ViewType.BONUS:
         this.title.setTitle(BONUS);
         break;
 

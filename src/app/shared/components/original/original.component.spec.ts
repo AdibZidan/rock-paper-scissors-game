@@ -1,8 +1,7 @@
 import { chooseMove } from '@actions/move.actions';
 import { hideView, showView } from '@actions/view.actions';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Mode } from '@enums/mode.enum';
-import { ViewType } from '@enums/view-type.enum';
+import { ViewType } from '@enums/view-type/view-type.enum';
 import { initialState } from '@mocks/initial-state.mock';
 import { Rock } from '@models/rock.model';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -57,7 +56,7 @@ describe('OriginalComponent', () => {
       component.ngOnInit();
     });
 
-    it('Should have a defined views$ property', () => {
+    it('Should have a defined view$ property', () => {
       expect(component.view$).toBeDefined();
     });
 
@@ -66,7 +65,7 @@ describe('OriginalComponent', () => {
 
       expect(dispatchSpy.calls.first().args).toEqual([{
         move: new Rock(),
-        mode: Mode.ORIGINAL,
+        mode: ViewType.ORIGINAL,
         type: chooseMove.type
       }]);
 

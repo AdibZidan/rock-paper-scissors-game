@@ -1,5 +1,5 @@
 import { decrementScore, incrementScore, resetScore } from '@actions/score.actions';
-import { getExistingPropertyFromLocalStorage } from '@helpers/store.helper';
+import { getExistingPropertyFromLocalStorage } from '@helpers/store/store.helper';
 import { Action, createReducer, on } from '@ngrx/store';
 
 const initialScoreState: number = 0;
