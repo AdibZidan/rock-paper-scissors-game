@@ -1,7 +1,0 @@
-@import "../shared/colors/_colors.scss";
-
-@mixin app-component {
-  html, body, main {
-    background: $main-background-color;
-  }
-}

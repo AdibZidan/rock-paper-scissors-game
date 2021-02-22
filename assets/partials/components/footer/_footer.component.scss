@@ -1,13 +1,11 @@
-@import "./_button.scss";
-@import "../shared/colors/_colors.scss";
-@import "../media-queries/_footer.component.media-queries.scss";
+@import "../../shared/button/_button.scss";
+@import "../../media-queries/footer/_footer.component.media-queries.scss";
 
 @mixin footer-component {
   footer {
     display: flex;
     justify-content: flex-end;
     padding: 18px;
-    background-color: darken($color: $background-color, $amount: 2);
 
     div {
       &.buttons-container {

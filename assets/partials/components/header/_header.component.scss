@@ -1,6 +1,6 @@
-@import "../shared/colors/_colors.scss";
-@import "../shared/border/_border.scss";
-@import "../media-queries/_header.component.media-queries.scss";
+@import "../../shared/colors/_colors.scss";
+@import "../../shared/border/_border.scss";
+@import "../../media-queries/header/_header.component.media-queries.scss";
 
 @mixin header-component {
   div {

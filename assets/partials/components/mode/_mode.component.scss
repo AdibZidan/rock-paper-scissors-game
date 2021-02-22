@@ -1,7 +1,7 @@
-@import "../shared/center/_center.scss";
-@import "../shared/border/_border.scss";
-@import "../shared/colors/_colors.scss";
-@import "../shared/image/_image.scss";
+@import "../../shared/center/_center.scss";
+@import "../../shared/border/_border.scss";
+@import "../../shared/colors/_colors.scss";
+@import "../../shared/image/_image.scss";
 
 @mixin mode-component {
   figure {

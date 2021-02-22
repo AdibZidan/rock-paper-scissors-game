@@ -1,5 +1,5 @@
-@import "./_mode.component.scss";
-@import "../media-queries/_original.component.scss";
+@import "../mode/_mode.component.scss";
+@import "../../media-queries/original/_original.component.scss";
 
 @mixin original-component {
   @include mode-component;

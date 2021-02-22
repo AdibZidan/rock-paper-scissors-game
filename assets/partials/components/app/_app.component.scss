@@ -1,0 +1,11 @@
+@import "../../shared/colors/_colors.scss";
+
+@mixin app-component {
+  html,
+  body,
+  main,
+  app-header,
+  app-footer {
+    background: $main-background-color;
+  }
+}
