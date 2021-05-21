@@ -1,4 +1,4 @@
-import { Lizard } from '@models/lizard.move';
+import { Lizard } from '@models/lizard.model';
 import { Paper } from '@models/paper.model';
 import { Rock } from '@models/rock.model';
 import { Scissors } from '@models/scissors.model';
