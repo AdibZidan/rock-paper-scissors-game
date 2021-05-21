@@ -3,7 +3,9 @@
 @mixin app-component {
   html,
   body,
-  main {
+  main,
+  app-header,
+  app-footer {
     background: $main-background-color;
   }
 }
